@@ -1720,7 +1720,10 @@
                 transform: translateY(0%);
             }
             100% {
-                transform: translateY(-100%);
+                /* JS duplicates the cards so the track is 2x tall — shifting
+                   by -50% lines the start of the duplicate set up with the
+                   viewport, then jumps back to 0% invisibly = seamless loop. */
+                transform: translateY(-50%);
             }
         }
 
@@ -2893,6 +2896,28 @@
         h.addEventListener('keydown', function(e){
           if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); }
         });
+      });
+    }
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', boot);
+    } else { boot(); }
+  })();
+</script>
+<script>
+  /* Seamless testimonial loop: clone every .testimonial-card in the track once
+     so the animation can translate 0 -> -50% and restart invisibly. */
+  (function(){
+    function boot(){
+      var track = document.querySelector('.testimonials-track');
+      if (!track) { setTimeout(boot, 200); return; }
+      if (track.dataset.loopBound) return;
+      track.dataset.loopBound = '1';
+      var originals = Array.prototype.slice.call(track.querySelectorAll('.testimonial-card'));
+      if (!originals.length) return;
+      originals.forEach(function(card){
+        var clone = card.cloneNode(true);
+        clone.setAttribute('aria-hidden', 'true');
+        track.appendChild(clone);
       });
     }
     if (document.readyState === 'loading') {
