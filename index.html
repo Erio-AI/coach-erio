@@ -1568,37 +1568,70 @@
           widgetResponsive gallery col20" id="gallery-widget-1752249376170" data-type="Gallery" data-delay="" data-animation-duration="" data-animation-delay="" data-animation="lazyAnimation-" style="margin-top: 0.819672%; margin-left: 0px;">
 
       <div class="col20 f-left gallery-widget-content">
-        <div class="inline-gallery with-tmdp-lightbox with-gallery" data-rel="lightbox" data-autoplay="true" data-timeout="2000" data-pauseonhover="true" data-arrows="true" data-pagination="false" data-items="3">
-
-              
-              
-              
-              
-              <div class="tos-wrapper tos-inline tos-fx-slide tos-fill tos-has-prev tos-has-next tos-opening tos-hover tos-opened"><div class="tos-slider" style="left: 0%;"><div class="tos-slide tos-html" style="width: 33.34%;"><div class="render-crisp tmdp-simple-lightbox-slide with-hover" data-slide="https://content.app-sources.com/s/749138317120496041/uploads/Site_Mockups/40-1583850-2262787.svg?format=webp" style="background: url(&#39;https://content.app-sources.com/s/749138317120496041/uploads/Site_Mockups/40-1583850-2262787.svg?format=webp&#39;) no-repeat center center;
-                     height: 0;
-                     background-size: cover;
-                     
-                     width: 100.0%;
-                     padding-top: 56.25%;">
-                </div></div><div class="tos-slide tos-html" style="width: 33.34%;"><div class="render-crisp tmdp-simple-lightbox-slide with-hover" data-slide="https://content.app-sources.com/s/749138317120496041/uploads/Site_Mockups/41-1583870-2262787.svg?format=webp" style="background: url(&#39;https://content.app-sources.com/s/749138317120496041/uploads/Site_Mockups/41-1583870-2262787.svg?format=webp&#39;) no-repeat center center;
-                     height: 0;
-                     background-size: cover;
-                     
-                     width: 100.0%;
-                     padding-top: 56.25%;">
-                </div></div><div class="tos-slide tos-html" style="width: 33.34%;"><div class="render-crisp tmdp-simple-lightbox-slide with-hover" data-slide="https://content.app-sources.com/s/749138317120496041/uploads/Site_Mockups/WF_Core_Site_Images-8-1583202-2262791.svg?format=webp" style="background: url(&#39;https://content.app-sources.com/s/749138317120496041/uploads/Site_Mockups/WF_Core_Site_Images-8-1583202-2262791.svg?format=webp&#39;) no-repeat center center;
-                     height: 0;
-                     background-size: cover;
-                     
-                     width: 100.0%;
-                     padding-top: 56.25%;">
-                </div></div><div class="tos-slide tos-html" style="width: 33.34%;"><div class="render-crisp tmdp-simple-lightbox-slide with-hover" data-slide="https://content.app-sources.com/s/749138317120496041/uploads/Site_Mockups/WF_Core_Site_Images-9-1583476-2262791.svg?format=webp" style="background: url(&#39;https://content.app-sources.com/s/749138317120496041/uploads/Site_Mockups/WF_Core_Site_Images-9-1583476-2262791.svg?format=webp&#39;) no-repeat center center;
-                     height: 0;
-                     background-size: cover;
-                     
-                     width: 100.0%;
-                     padding-top: 56.25%;">
-                </div></div></div><a class="tos-prev" href="https://infoou.swiftwebsites.ai/easy?preview=__PREVIEW_ONLY#"><span></span></a><a class="tos-next" href="https://infoou.swiftwebsites.ai/easy?preview=__PREVIEW_ONLY#"><span></span></a></div></div>
+        <div class="coach-carousel" aria-label="Examples of coaching websites we've built" aria-roledescription="carousel">
+          <style>
+            .coach-carousel { position: relative; width: 100%; overflow: hidden; padding: 8px 0; }
+            /* Fade the edges so slides enter/exit smoothly */
+            .coach-carousel::before,
+            .coach-carousel::after {
+              content: "";
+              position: absolute; top: 0; bottom: 0; width: 60px; z-index: 2; pointer-events: none;
+            }
+            .coach-carousel::before { left: 0;  background: linear-gradient(to right, #ffffff 0%, rgba(255,255,255,0) 100%); }
+            .coach-carousel::after  { right: 0; background: linear-gradient(to left,  #ffffff 0%, rgba(255,255,255,0) 100%); }
+            .coach-carousel-track {
+              display: flex;
+              width: max-content;      /* let the track size to sum of children */
+              animation: coach-carousel-slide 36s linear infinite;
+              will-change: transform;
+            }
+            .coach-carousel:hover .coach-carousel-track { animation-play-state: paused; }
+            .coach-carousel-slide {
+              /* One-third of the visible carousel width — this is what gives us
+                 exactly 3 visible slides at any moment on any screen size. */
+              flex: 0 0 calc((100vw - 48px) / 3);
+              max-width: 33.3vw;
+              padding: 0 10px;
+              box-sizing: border-box;
+            }
+            /* Cap max size so on wide desktops slides don't get uselessly huge */
+            @media (min-width: 1200px) {
+              .coach-carousel-slide { flex-basis: 380px; max-width: 380px; }
+            }
+            .coach-carousel-slide img {
+              width: 100%;
+              height: auto;
+              display: block;
+              border-radius: 14px;
+              box-shadow: 0 10px 32px rgba(0, 0, 0, 0.12);
+              background: #f4f4f4;
+            }
+            /* Track holds 12 items (6 originals + 6 duplicates) so at -50%
+               translate we land seamlessly at the identical start position. */
+            @keyframes coach-carousel-slide {
+              from { transform: translate3d(0, 0, 0); }
+              to   { transform: translate3d(-50%, 0, 0); }
+            }
+            @media (prefers-reduced-motion: reduce) {
+              .coach-carousel-track { animation: none; }
+            }
+          </style>
+          <div class="coach-carousel-track">
+            <div class="coach-carousel-slide"><img loading="lazy" src="./coach-source_files/coach-mockup-1.png" alt="Example coaching website #1 built by Erio"></div>
+            <div class="coach-carousel-slide"><img loading="lazy" src="./coach-source_files/coach-mockup-2.png" alt="Example coaching website #2 built by Erio"></div>
+            <div class="coach-carousel-slide"><img loading="lazy" src="./coach-source_files/coach-mockup-3.png" alt="Example coaching website #3 built by Erio"></div>
+            <div class="coach-carousel-slide"><img loading="lazy" src="./coach-source_files/coach-mockup-4.png" alt="Example coaching website #4 built by Erio"></div>
+            <div class="coach-carousel-slide"><img loading="lazy" src="./coach-source_files/coach-mockup-5.png" alt="Example coaching website #5 built by Erio"></div>
+            <div class="coach-carousel-slide"><img loading="lazy" src="./coach-source_files/coach-mockup-6.png" alt="Example coaching website #6 built by Erio"></div>
+            <!-- Duplicate set (aria-hidden) — enables the seamless -50% loop -->
+            <div class="coach-carousel-slide" aria-hidden="true"><img loading="lazy" src="./coach-source_files/coach-mockup-1.png" alt=""></div>
+            <div class="coach-carousel-slide" aria-hidden="true"><img loading="lazy" src="./coach-source_files/coach-mockup-2.png" alt=""></div>
+            <div class="coach-carousel-slide" aria-hidden="true"><img loading="lazy" src="./coach-source_files/coach-mockup-3.png" alt=""></div>
+            <div class="coach-carousel-slide" aria-hidden="true"><img loading="lazy" src="./coach-source_files/coach-mockup-4.png" alt=""></div>
+            <div class="coach-carousel-slide" aria-hidden="true"><img loading="lazy" src="./coach-source_files/coach-mockup-5.png" alt=""></div>
+            <div class="coach-carousel-slide" aria-hidden="true"><img loading="lazy" src="./coach-source_files/coach-mockup-6.png" alt=""></div>
+          </div>
+        </div>
           </div>
     </div>
   </div>
