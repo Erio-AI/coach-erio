@@ -1598,14 +1598,14 @@
             .coach-carousel-slide {
               /* One-third of the visible carousel width — this is what gives us
                  exactly 3 visible slides at any moment on any screen size. */
-              flex: 0 0 calc((100vw - 48px) / 3);
-              max-width: 33.3vw;
+              flex: 0 0 calc((100vw - 48px) / 2.4);
+              max-width: 41.625vw;
               padding: 0 10px;
               box-sizing: border-box;
             }
             /* Cap max size so on wide desktops slides don't get uselessly huge */
             @media (min-width: 1200px) {
-              .coach-carousel-slide { flex-basis: 380px; max-width: 380px; }
+              .coach-carousel-slide { flex-basis: 475px; max-width: 475px; }
             }
             .coach-carousel-slide img {
               width: 100%;
