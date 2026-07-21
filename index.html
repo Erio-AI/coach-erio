@@ -1570,7 +1570,7 @@
       <div class="col20 f-left gallery-widget-content">
         <div class="coach-carousel" aria-label="Examples of coaching websites we've built" aria-roledescription="carousel">
           <style>
-            .coach-carousel { position: relative; width: 100%; overflow: hidden; padding: 8px 0; }
+            .coach-carousel { position: relative; width: 100%; overflow: hidden; padding: 8px 0; background: #ffffff !important; }
             /* Fade the edges so slides enter/exit smoothly */
             .coach-carousel::before,
             .coach-carousel::after {
@@ -1604,13 +1604,13 @@
               display: block;
               border-radius: 14px;
               box-shadow: 0 10px 32px rgba(0, 0, 0, 0.12);
-              background: #f4f4f4;
+              background: #ffffff;
             }
             /* Track holds 12 items (6 originals + 6 duplicates) so at -50%
                translate we land seamlessly at the identical start position. */
             @keyframes coach-carousel-slide {
-              from { transform: translate3d(0, 0, 0); }
-              to   { transform: translate3d(-50%, 0, 0); }
+              from { transform: translate3d(-50%, 0, 0); }
+              to   { transform: translate3d(0, 0, 0); }
             }
             @media (prefers-reduced-motion: reduce) {
               .coach-carousel-track { animation: none; }
