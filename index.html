@@ -1568,9 +1568,18 @@
           widgetResponsive gallery col20" id="gallery-widget-1752249376170" data-type="Gallery" data-delay="" data-animation-duration="" data-animation-delay="" data-animation="lazyAnimation-" style="margin-top: 0.819672%; margin-left: 0px;">
 
       <div class="col20 f-left gallery-widget-content">
-        <div class="coach-carousel" aria-label="Examples of coaching websites we've built" aria-roledescription="carousel">
+        <div class="coach-carousel-outer" style="background: #ffffff !important; padding: 0;"><div class="coach-carousel" aria-label="Examples of coaching websites we've built" aria-roledescription="carousel">
           <style>
             .coach-carousel { position: relative; width: 100%; overflow: hidden; padding: 8px 0; background: #ffffff !important; }
+            /* Force every ancestor of the carousel to render pure white. */
+            .coach-carousel,
+            .coach-carousel * ,
+            .widget.gallery,
+            .widget.gallery *,
+            .gallery-widget-content,
+            .coach-carousel-wrap,
+            .coach-carousel-outer { background-color: #ffffff !important; }
+
             /* Fade the edges so slides enter/exit smoothly */
             .coach-carousel::before,
             .coach-carousel::after {
@@ -1603,7 +1612,7 @@
               height: auto;
               display: block;
               border-radius: 14px;
-              box-shadow: 0 10px 32px rgba(0, 0, 0, 0.12);
+              box-shadow: none;
               background: #ffffff;
             }
             /* Track holds 12 items (6 originals + 6 duplicates) so at -50%
@@ -1631,7 +1640,7 @@
             <div class="coach-carousel-slide" aria-hidden="true"><img loading="lazy" src="./coach-source_files/coach-mockup-5.png" alt=""></div>
             <div class="coach-carousel-slide" aria-hidden="true"><img loading="lazy" src="./coach-source_files/coach-mockup-6.png" alt=""></div>
           </div>
-        </div>
+        </div></div>
           </div>
     </div>
   </div>
