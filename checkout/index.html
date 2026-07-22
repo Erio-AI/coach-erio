@@ -821,7 +821,7 @@
                   <div class="col20 f-left" style="width: 100%;">
                     <iframe id="ghl-checkout-iframe"
                       src="https://coachcheckout.erio.ai/"
-                      style="width: 100%; min-height: 0; height: 420px; border: none; background: #ffffff; display: block;"
+                      style="width: 100%; min-height: 0; height: 420px; border: none; background: #ffffff; display: block; transition: height 320ms cubic-bezier(0.4, 0, 0.2, 1); will-change: height;"
                       title="Coach Checkout Order Form"
                       allow="payment *; clipboard-write; camera; microphone"
                       referrerpolicy="strict-origin-when-cross-origin"
@@ -834,8 +834,16 @@
                       (function(){
                         function init(){
                           if (window.iframeResize) {
-                            window.iframeResize({ license: 'GPLv3', log: false, waitForLoad: true },
-                                                 '#ghl-checkout-iframe');
+                            window.iframeResize({
+                              license: 'GPLv3',
+                              log: false,
+                              waitForLoad: true,
+                              heightCalculationMethod: 'lowestElement',
+                              tolerance: 8,
+                              onResized: function(){
+                                /* no-op — CSS transition handles the animation */
+                              }
+                            }, '#ghl-checkout-iframe');
                           } else { setTimeout(init, 200); }
                         }
                         init();
