@@ -820,7 +820,8 @@
                 <div class="widget widgetResponsive col20" style="margin-top: 16px; margin-left: 0;">
                   <div class="col20 f-left" style="width: 100%;">
                     <iframe id="ghl-checkout-iframe"
-                      src="https://coachcheckout.erio.ai/"
+                      data-src="https://coachcheckout.erio.ai/"
+                      src="about:blank"
                       style="width: 100%; min-height: 0; height: 420px; border: none; background: #ffffff; display: block; transition: height 320ms cubic-bezier(0.4, 0, 0.2, 1); will-change: height;"
                       title="Coach Checkout Order Form"
                       allow="payment *; clipboard-write; camera; microphone"
@@ -832,6 +833,13 @@
                          Child snippet must be added to coachcheckout.erio.ai via
                          GHL → Funnel Settings → Tracking Code (Head or Body). */
                       (function(){
+                        /* Forward the parent URL's query string (e.g. ?full_name=…&email=…&phone=…)
+                           into the GHL iframe URL so the GHL page can prefill its fields. */
+                        var f = document.getElementById('ghl-checkout-iframe');
+                        var base = (f && f.getAttribute('data-src')) || 'https://coachcheckout.erio.ai/';
+                        var qs = window.location.search || '';
+                        f.src = base + qs;
+
                         function init(){
                           if (window.iframeResize) {
                             window.iframeResize({
