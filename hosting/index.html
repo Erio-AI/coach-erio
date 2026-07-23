@@ -224,8 +224,8 @@
   <div class="toggle-wrap">
     <div class="toggle" id="billingToggle">
       <span class="toggle-thumb" id="thumb"></span>
-      <button class="active" data-billing="monthly">Monthly</button>
-      <button data-billing="annual">Annual <span class="save-badge">SAVE 17%</span></button>
+      <button data-billing="monthly">Monthly</button>
+      <button class="active" data-billing="annual">Annual <span class="save-badge">SAVE 17%</span></button>
     </div>
   </div>
 
@@ -315,7 +315,7 @@
       b.addEventListener('click', function(){ setBilling(b.dataset.billing); });
     });
 
-    window.addEventListener('load', positionThumb);
+    window.addEventListener('load', function(){ setBilling('annual'); });
     window.addEventListener('resize', positionThumb);
   })();
 </script>
