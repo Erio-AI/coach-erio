@@ -147,6 +147,27 @@
   }
   .btn-back:hover { color: var(--teal-700); }
 
+  .top-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--muted);
+    font-size: 14px;
+    text-decoration: none;
+    padding: 8px 14px 8px 10px;
+    border-radius: 10px;
+    background: #ffffff;
+    border: 1px solid var(--line);
+    margin-bottom: 22px;
+    transition: color 160ms ease, border-color 160ms ease, transform 160ms ease;
+  }
+  .top-back:hover {
+    color: var(--teal-700);
+    border-color: var(--teal-700);
+    transform: translateX(-2px);
+  }
+  .top-back svg { width: 14px; height: 14px; }
+
   @media (max-width: 620px) {
     body { padding: 24px 14px 40px; }
     .panel, .compare { padding: 22px 20px; }
@@ -156,6 +177,11 @@
 <body>
 
 <div class="wrap">
+
+  <a class="top-back" href="../">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+    Back to plans
+  </a>
 
   <div class="warn-badge">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
