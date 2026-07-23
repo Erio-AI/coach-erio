@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Are You Sure? | Erio</title>
+<style>
+  :root {
+    --teal-900: #003a52;
+    --teal-700: #005475;
+    --teal-500: #007299;
+    --gold:     #ffd400;
+    --warn:     #d9534f;
+    --ink:      #17252a;
+    --muted:    #536770;
+    --line:     #e2ecef;
+    --bg:       #f6fafc;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    color: var(--ink);
+    background: var(--bg);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    padding: 40px 20px 60px;
+  }
+  .wrap { max-width: 720px; margin: 0 auto; }
+
+  .warn-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(217, 83, 79, 0.10);
+    color: var(--warn);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.6px;
+    padding: 6px 14px;
+    border-radius: 999px;
+    margin-bottom: 18px;
+    text-transform: uppercase;
+  }
+  .warn-badge svg { width: 14px; height: 14px; }
+
+  h1 {
+    font-size: clamp(28px, 4vw, 40px);
+    letter-spacing: -0.02em;
+    color: var(--teal-900);
+    margin: 0 0 12px;
+    line-height: 1.15;
+  }
+  .lede {
+    font-size: 17px;
+    color: var(--muted);
+    margin: 0 0 32px;
+  }
+
+  .panel {
+    background: #ffffff;
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    padding: 28px 28px 24px;
+    box-shadow: 0 8px 22px rgba(0, 58, 82, 0.06);
+    margin-bottom: 22px;
+  }
+  .panel h2 {
+    margin: 0 0 12px;
+    font-size: 18px;
+    letter-spacing: -0.01em;
+    color: var(--teal-900);
+  }
+  .panel p { margin: 0 0 10px; font-size: 15px; }
+  .panel p:last-child { margin: 0; }
+
+  ol.steps {
+    padding-left: 22px;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  ol.steps li { font-size: 15px; }
+  ol.steps li strong { color: var(--teal-900); display: block; margin-bottom: 2px; }
+  ol.steps li code {
+    background: #eef4f7;
+    color: var(--teal-900);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 13px;
+    font-family: "SF Mono", ui-monospace, Menlo, monospace;
+  }
+  ol.steps li .muted { color: var(--muted); font-size: 13px; display: block; margin-top: 2px; }
+
+  .compare {
+    background: linear-gradient(160deg, #002d3f, #005475 65%, #007299);
+    color: #fff;
+    border-radius: 20px;
+    padding: 26px 28px;
+    margin-bottom: 22px;
+  }
+  .compare h2 { margin: 0 0 6px; font-size: 18px; letter-spacing: -0.01em; }
+  .compare p { margin: 0; font-size: 15px; color: rgba(255,255,255,0.9); }
+  .compare a {
+    display: inline-block;
+    margin-top: 14px;
+    background: var(--gold);
+    color: var(--teal-900);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 14px;
+    padding: 10px 18px;
+    border-radius: 10px;
+    transition: transform 160ms ease, box-shadow 160ms ease;
+  }
+  .compare a:hover { transform: translateY(-1px); box-shadow: 0 6px 16px rgba(255,212,0,0.35); }
+
+  .actions {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 8px;
+  }
+  .btn-confirm {
+    display: block;
+    text-align: center;
+    padding: 16px 20px;
+    border-radius: 12px;
+    background: #ffffff;
+    color: var(--warn);
+    border: 2px solid var(--warn);
+    font-size: 15px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: background 160ms ease, color 160ms ease;
+  }
+  .btn-confirm:hover { background: var(--warn); color: #fff; }
+  .btn-back {
+    display: block;
+    text-align: center;
+    color: var(--muted);
+    font-size: 14px;
+    text-decoration: none;
+    padding: 8px;
+  }
+  .btn-back:hover { color: var(--teal-700); }
+
+  @media (max-width: 620px) {
+    body { padding: 24px 14px 40px; }
+    .panel, .compare { padding: 22px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <div class="warn-badge">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+    Before you continue — read this
+  </div>
+
+  <h1>Are you sure you want to host it yourself?</h1>
+  <p class="lede">We'll gladly send you the finished website files at no extra cost — but you'll be on your own from that point on. Here's exactly what that means.</p>
+
+  <div class="panel">
+    <h2>What you'll receive</h2>
+    <p>Within 24 hours of submitting your business info, we'll email you a <strong>.zip file</strong> containing the complete source code of your website — HTML, CSS, JavaScript, images, and configuration files.</p>
+  </div>
+
+  <div class="panel">
+    <h2>What you'll need to do yourself</h2>
+    <ol class="steps">
+      <li>
+        <strong>Install Node.js on your computer</strong>
+        <span class="muted">Free, from nodejs.org — but you'll need to know how to install command-line software.</span>
+      </li>
+      <li>
+        <strong>Open Terminal / Command Prompt</strong>
+        <span class="muted">Then run <code>npm install</code> to fetch dependencies (a few hundred files), then <code>npm run build</code> to compile the site.</span>
+      </li>
+      <li>
+        <strong>Find a hosting provider</strong>
+        <span class="muted">Netlify, Vercel, Cloudflare Pages, or a traditional web host. Free options exist but come with limitations.</span>
+      </li>
+      <li>
+        <strong>Upload the built files</strong>
+        <span class="muted">Drag-and-drop or via CLI. You'll need to configure environment variables, redirects, and SSL certificates.</span>
+      </li>
+      <li>
+        <strong>Buy and connect your domain</strong>
+        <span class="muted">Purchase from GoDaddy, Namecheap, etc. Then edit DNS records (A, CNAME) — takes 24–48 hours to propagate.</span>
+      </li>
+      <li>
+        <strong>Handle everything ongoing</strong>
+        <span class="muted">Security updates, backups, uptime monitoring, contact form storage, spam prevention, SSL renewals, hosting bills — all on you.</span>
+      </li>
+      <li>
+        <strong>No CRM, no automations, no support</strong>
+        <span class="muted">Every lead form submission goes to a raw email — no dashboard, no follow-up automation, no calendar bookings, no reminders, no reviews automation. If a lead falls through the cracks, it's gone.</span>
+      </li>
+    </ol>
+  </div>
+
+  <div class="compare">
+    <h2>The easier way</h2>
+    <p>For $47/mo, we handle all of the above — hosting, maintenance, CRM, lead capture, follow-up automations, booking calendar, and support. Your website just works, and every lead is tracked and nurtured automatically.</p>
+    <a href="../">← Go back and choose a plan</a>
+  </div>
+
+  <div class="actions">
+    <a class="btn-confirm" href="URL_FILES_FORM">Yes, I understand — send me the files anyway</a>
+    <a class="btn-back" href="../">← Take me back to the plans</a>
+  </div>
+
+</div>
+
+</body>
+</html>
