@@ -141,17 +141,12 @@
     <a class="cta" id="reviewsCta" href="URL_REVIEWS_MONTHLY">Activate Reviews Automation</a>
   </div>
 
-  <div class="optout">
-    <a id="skipLink" href="#">No thanks — skip this step</a>
-  </div>
-
 </div>
 
 <script>
   (function(){
     var qs = window.location.search || '';
     var cta = document.getElementById('reviewsCta');
-    var skip = document.getElementById('skipLink');
     if (qs && cta) {
       var sep = cta.href.indexOf('?') === -1 ? '?' : '&';
       cta.href = cta.href + sep + qs.substring(1);
