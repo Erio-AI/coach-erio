@@ -300,6 +300,15 @@
     var priceEls = document.querySelectorAll('.price-num');
     var subEls = document.querySelectorAll('.price-sub');
     var ctaEls = document.querySelectorAll('.cta');
+    var filesLink = document.getElementById('filesOptOut');
+
+    var parentQS = window.location.search || '';
+
+    function withParams(baseUrl){
+      if (!parentQS) return baseUrl;
+      var sep = baseUrl.indexOf('?') === -1 ? '?' : '&';
+      return baseUrl + sep + parentQS.substring(1);
+    }
 
     function positionThumb(){
       var active = toggle.querySelector('button.active');
@@ -311,9 +320,16 @@
       btns.forEach(function(b){ b.classList.toggle('active', b.dataset.billing === mode); });
       priceEls.forEach(function(el){ el.textContent = '$' + el.dataset[mode]; });
       subEls.forEach(function(el){ el.textContent = el.dataset[mode]; });
-      ctaEls.forEach(function(el){ el.href = el.dataset[mode]; });
+      ctaEls.forEach(function(el){ el.href = withParams(el.dataset[mode]); });
       positionThumb();
     }
+
+    if (filesLink) {
+      filesLink.href = withParams(filesLink.getAttribute('href'));
+    }
+    document.querySelectorAll('.optout a').forEach(function(a){
+      a.href = withParams(a.getAttribute('href'));
+    });
 
     btns.forEach(function(b){
       b.addEventListener('click', function(){ setBilling(b.dataset.billing); });

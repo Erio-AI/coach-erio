@@ -237,12 +237,30 @@
     <a href="../">← Go back and choose a plan</a>
   </div>
 
-  <iframe src="https://api.erio.ai/widget/form/yhOYNfi3Tr6CWpLzKT6y"
+  <iframe id="filesForm"
+          data-base="https://api.erio.ai/widget/form/yhOYNfi3Tr6CWpLzKT6y"
+          src="about:blank"
           style="border:none;width:100%;min-height:60px;display:block;"
           scrolling="no"
-          id="yhOYNfi3Tr6CWpLzKT6y"
           title="Files Opt-Out Form"></iframe>
   <script src="https://api.erio.ai/js/form_embed.js"></script>
+  <script>
+    (function(){
+      var f = document.getElementById('filesForm');
+      var base = f.getAttribute('data-base');
+      var qs = window.location.search || '';
+      f.src = base + qs;
+      var back = document.querySelector('.top-back');
+      var back2 = document.querySelector('.btn-back');
+      var compareLink = document.querySelector('.compare a');
+      [back, back2, compareLink].forEach(function(a){
+        if (!a) return;
+        var href = a.getAttribute('href');
+        var sep = href.indexOf('?') === -1 ? '?' : '&';
+        a.href = href + (qs ? sep + qs.substring(1) : '');
+      });
+    })();
+  </script>
 
   <div class="actions">
     <a class="btn-back" href="../">← Take me back to the plans</a>
