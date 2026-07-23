@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Upgrade Your Website | Erio</title>
+<style>
+  :root {
+    --teal-900: #003a52;
+    --teal-700: #005475;
+    --teal-500: #007299;
+    --gold:     #ffd400;
+    --ink:      #17252a;
+    --muted:    #536770;
+    --line:     #e2ecef;
+    --bg:       #f6fafc;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    color: var(--ink);
+    background: var(--bg);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    padding: 32px 20px 60px;
+  }
+  .wrap { max-width: 980px; margin: 0 auto; }
+
+  .cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  .cards.single { grid-template-columns: 1fr; max-width: 560px; margin: 0 auto; }
+
+  .card {
+    position: relative;
+    background: #ffffff;
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    padding: 36px 28px 28px;
+    display: flex;
+    flex-direction: column;
+    transition: transform 260ms ease, box-shadow 260ms ease;
+  }
+  .card:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(0,58,82,0.10); }
+  .card[hidden] { display: none !important; }
+
+  .card.featured {
+    background: linear-gradient(160deg, #002d3f 0%, #005475 65%, #007299 100%);
+    color: #ffffff;
+    border-color: transparent;
+    box-shadow: 0 20px 40px rgba(0, 58, 82, 0.22);
+  }
+  .card.featured .price-num { color: #ffffff; }
+  .card.featured .plan-tag { color: rgba(255,255,255,0.8); }
+  .card.featured .feature-check { color: var(--gold); }
+  .card.featured .price-sub { color: rgba(255,255,255,0.75); }
+
+  .badge-popular {
+    position: absolute;
+    top: -14px;
+    right: 20px;
+    background: var(--gold);
+    color: var(--teal-900);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.6px;
+    padding: 6px 12px;
+    border-radius: 999px;
+    box-shadow: 0 4px 12px rgba(255, 212, 0, 0.4);
+  }
+
+  .plan-name {
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    margin: 0 0 4px;
+  }
+  .plan-tag {
+    font-size: 13px;
+    color: var(--muted);
+    margin: 0 0 22px;
+  }
+
+  .price-row { display: flex; align-items: baseline; gap: 6px; margin-bottom: 4px; }
+  .price-num {
+    font-size: 46px;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    color: var(--teal-900);
+    line-height: 1;
+  }
+  .price-per { font-size: 14px; color: var(--muted); font-weight: 500; }
+  .card.featured .price-per { color: rgba(255,255,255,0.75); }
+  .price-sub { font-size: 12px; color: var(--muted); margin-bottom: 24px; }
+
+  ul.features {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  ul.features li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 14px;
+    line-height: 1.45;
+  }
+  .feature-check {
+    flex: 0 0 auto;
+    width: 18px;
+    height: 18px;
+    color: var(--teal-500);
+    margin-top: 1px;
+  }
+
+  .cta {
+    display: block;
+    text-align: center;
+    padding: 14px 20px;
+    border-radius: 12px;
+    font-size: 15px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: transform 160ms ease, box-shadow 160ms ease;
+    margin-top: auto;
+  }
+  .cta-primary {
+    background: linear-gradient(135deg, var(--teal-700), var(--teal-500));
+    color: #ffffff;
+    box-shadow: 0 6px 16px rgba(0, 82, 117, 0.28);
+  }
+  .cta-primary:hover { transform: translateY(-1px); box-shadow: 0 10px 22px rgba(0, 82, 117, 0.36); }
+  .cta-featured {
+    background: var(--gold);
+    color: var(--teal-900);
+    box-shadow: 0 6px 16px rgba(255, 212, 0, 0.35);
+  }
+  .cta-featured:hover { transform: translateY(-1px); box-shadow: 0 10px 22px rgba(255, 212, 0, 0.5); }
+
+  .empty-state {
+    text-align: center;
+    padding: 40px 20px;
+    color: var(--muted);
+    font-size: 16px;
+  }
+
+  @media (max-width: 720px) {
+    body { padding: 20px 14px 40px; }
+    .cards { grid-template-columns: 1fr; gap: 30px; }
+    .card { padding: 32px 22px 24px; }
+    .price-num { font-size: 40px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <div class="cards" id="cardsWrap">
+
+    <div class="card" id="card5page" hidden>
+      <h2 class="plan-name">Upgrade to 5-Page Website</h2>
+      <p class="plan-tag">Turn your one-page site into a full 5-page website — Home, About, Services, Testimonials &amp; Contact.</p>
+      <div class="price-row">
+        <span class="price-num">$20</span>
+        <span class="price-per">one-time</span>
+      </div>
+      <div class="price-sub">You already paid $27. Just $20 more.</div>
+      <ul class="features">
+        <li><svg class="feature-check" viewBox="0 0 20 20" fill="currentColor"><path d="M16.7 5.3a1 1 0 0 1 0 1.4l-8 8a1 1 0 0 1-1.4 0l-4-4a1 1 0 1 1 1.4-1.4L8 12.6l7.3-7.3a1 1 0 0 1 1.4 0z"/></svg>4 additional custom-designed pages</li>
+        <li><svg class="feature-check" viewBox="0 0 20 20" fill="currentColor"><path d="M16.7 5.3a1 1 0 0 1 0 1.4l-8 8a1 1 0 0 1-1.4 0l-4-4a1 1 0 1 1 1.4-1.4L8 12.6l7.3-7.3a1 1 0 0 1 1.4 0z"/></svg>Deeper trust with visitors (more content = more credibility)</li>
+        <li><svg class="feature-check" viewBox="0 0 20 20" fill="currentColor"><path d="M16.7 5.3a1 1 0 0 1 0 1.4l-8 8a1 1 0 0 1-1.4 0l-4-4a1 1 0 1 1 1.4-1.4L8 12.6l7.3-7.3a1 1 0 0 1 1.4 0z"/></svg>Better ranking on Google (more indexed pages)</li>
+        <li><svg class="feature-check" viewBox="0 0 20 20" fill="currentColor"><path d="M16.7 5.3a1 1 0 0 1 0 1.4l-8 8a1 1 0 0 1-1.4 0l-4-4a1 1 0 1 1 1.4-1.4L8 12.6l7.3-7.3a1 1 0 0 1 1.4 0z"/></svg>Same 24-hour delivery</li>
+      </ul>
+      <a class="cta cta-primary" id="cta5page" target="_blank" rel="noopener"
+         href="https://api.erio.ai/payment-link/6a6193017b99151a54040089">Upgrade to 5-Page</a>
+    </div>
+
+    <div class="card featured" id="card20page" hidden>
+      <span class="badge-popular">BEST VALUE</span>
+      <h2 class="plan-name">Upgrade to 20+ Page Website</h2>
+      <p class="plan-tag">A full high-authority website — landing pages, blog posts, service pages, city pages, everything.</p>
+      <div class="price-row">
+        <span class="price-num" id="price20num">$70</span>
+        <span class="price-per">one-time</span>
+      </div>
+      <div class="price-sub" id="price20sub">You already paid $27. Just $70 more.</div>
+      <ul class="features">
+        <li><svg class="feature-check" viewBox="0 0 20 20" fill="currentColor"><path d="M16.7 5.3a1 1 0 0 1 0 1.4l-8 8a1 1 0 0 1-1.4 0l-4-4a1 1 0 1 1 1.4-1.4L8 12.6l7.3-7.3a1 1 0 0 1 1.4 0z"/></svg>20+ custom-designed pages</li>
+        <li><svg class="feature-check" viewBox="0 0 20 20" fill="currentColor"><path d="M16.7 5.3a1 1 0 0 1 0 1.4l-8 8a1 1 0 0 1-1.4 0l-4-4a1 1 0 1 1 1.4-1.4L8 12.6l7.3-7.3a1 1 0 0 1 1.4 0z"/></svg>Dedicated pages for every service &amp; every city you serve</li>
+        <li><svg class="feature-check" viewBox="0 0 20 20" fill="currentColor"><path d="M16.7 5.3a1 1 0 0 1 0 1.4l-8 8a1 1 0 0 1-1.4 0l-4-4a1 1 0 1 1 1.4-1.4L8 12.6l7.3-7.3a1 1 0 0 1 1.4 0z"/></svg>Blog + case study pages (rank for long-tail keywords)</li>
+        <li><svg class="feature-check" viewBox="0 0 20 20" fill="currentColor"><path d="M16.7 5.3a1 1 0 0 1 0 1.4l-8 8a1 1 0 0 1-1.4 0l-4-4a1 1 0 1 1 1.4-1.4L8 12.6l7.3-7.3a1 1 0 0 1 1.4 0z"/></svg>Serious authority in Google's eyes</li>
+        <li><svg class="feature-check" viewBox="0 0 20 20" fill="currentColor"><path d="M16.7 5.3a1 1 0 0 1 0 1.4l-8 8a1 1 0 0 1-1.4 0l-4-4a1 1 0 1 1 1.4-1.4L8 12.6l7.3-7.3a1 1 0 0 1 1.4 0z"/></svg>Same 24-hour delivery</li>
+      </ul>
+      <a class="cta cta-featured" id="cta20page" target="_blank" rel="noopener"
+         href="https://api.erio.ai/payment-link/6a6192eda655fa0b802a5b7e">Upgrade to 20+ Page</a>
+    </div>
+
+    <div class="empty-state" id="emptyState" hidden>
+      You're already on our top-tier 20+ page website. Nothing more to upgrade here!
+    </div>
+
+  </div>
+
+</div>
+
+<script>
+  (function(){
+    var params = new URLSearchParams(window.location.search || '');
+    var tier = (params.get('tier') || '').trim();
+
+    var card5 = document.getElementById('card5page');
+    var card20 = document.getElementById('card20page');
+    var empty = document.getElementById('emptyState');
+    var wrap = document.getElementById('cardsWrap');
+    var price20num = document.getElementById('price20num');
+    var price20sub = document.getElementById('price20sub');
+    var cta20 = document.getElementById('cta20page');
+
+    var upgradeLinks = {
+      '27_to_97': 'https://api.erio.ai/payment-link/6a6192eda655fa0b802a5b7e',
+      '47_to_97': 'https://api.erio.ai/payment-link/6a6193177b99151a5404008a'
+    };
+
+    function showFor27(){
+      card5.hidden = false;
+      card20.hidden = false;
+      price20num.textContent = '$70';
+      price20sub.textContent = 'You already paid $27. Just $70 more.';
+      cta20.href = upgradeLinks['27_to_97'];
+    }
+    function showFor47(){
+      card5.hidden = true;
+      card20.hidden = false;
+      price20num.textContent = '$50';
+      price20sub.textContent = 'You already paid $47. Just $50 more.';
+      cta20.href = upgradeLinks['47_to_97'];
+      wrap.classList.add('single');
+    }
+    function showFor97(){
+      card5.hidden = true;
+      card20.hidden = true;
+      empty.hidden = false;
+    }
+
+    if (tier === '27') showFor27();
+    else if (tier === '47') showFor47();
+    else if (tier === '97') showFor97();
+    else showFor27();
+
+    var qsFull = window.location.search || '';
+    if (qsFull) {
+      document.querySelectorAll('.cta').forEach(function(a){
+        var href = a.getAttribute('href');
+        var sep = href.indexOf('?') === -1 ? '?' : '&';
+        a.href = href + sep + qsFull.substring(1);
+      });
+    }
+  })();
+</script>
+
+</body>
+</html>
