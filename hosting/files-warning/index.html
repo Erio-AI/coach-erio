@@ -151,20 +151,21 @@
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    color: var(--muted);
+    color: #ffffff;
     font-size: 14px;
+    font-weight: 600;
     text-decoration: none;
-    padding: 8px 14px 8px 10px;
+    padding: 10px 16px 10px 12px;
     border-radius: 10px;
-    background: #ffffff;
-    border: 1px solid var(--line);
+    background: linear-gradient(160deg, #002d3f 0%, #005475 65%, #007299 100%);
+    border: none;
+    box-shadow: 0 6px 16px rgba(0, 82, 117, 0.28);
     margin-bottom: 22px;
-    transition: color 160ms ease, border-color 160ms ease, transform 160ms ease;
+    transition: transform 160ms ease, box-shadow 160ms ease;
   }
   .top-back:hover {
-    color: var(--teal-700);
-    border-color: var(--teal-700);
     transform: translateX(-2px);
+    box-shadow: 0 10px 22px rgba(0, 82, 117, 0.36);
   }
   .top-back svg { width: 14px; height: 14px; }
 
