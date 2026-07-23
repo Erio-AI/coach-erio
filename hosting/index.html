@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Choose Your Plan | Erio</title>
+<style>
+  :root {
+    --teal-900: #003a52;
+    --teal-700: #005475;
+    --teal-500: #007299;
+    --gold:     #ffd400;
+    --ink:      #17252a;
+    --muted:    #536770;
+    --line:     #e2ecef;
+    --bg:       #f6fafc;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    color: var(--ink);
+    background: var(--bg);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    padding: 32px 20px 60px;
+  }
+  .wrap { max-width: 980px; margin: 0 auto; }
+
+  .toggle-wrap {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 32px;
+  }
+  .toggle {
+    display: inline-flex;
+    background: #ffffff;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 5px;
+    position: relative;
+    box-shadow: 0 2px 8px rgba(0,58,82,0.06);
+  }
+  .toggle button {
+    all: unset;
+    cursor: pointer;
+    padding: 10px 22px;
+    border-radius: 999px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--muted);
+    transition: color 200ms ease;
+    z-index: 1;
+    position: relative;
+  }
+  .toggle button.active { color: #fff; }
+  .toggle-thumb {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    height: calc(100% - 10px);
+    background: linear-gradient(135deg, var(--teal-700), var(--teal-500));
+    border-radius: 999px;
+    transition: transform 320ms cubic-bezier(0.4, 0, 0.2, 1), width 320ms cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 0;
+  }
+  .save-badge {
+    display: inline-block;
+    margin-left: 6px;
+    background: var(--gold);
+    color: var(--teal-900);
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.4px;
+    padding: 2px 6px;
+    border-radius: 4px;
+    vertical-align: middle;
+  }
+
+  .cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+  .card {
+    position: relative;
+    background: #ffffff;
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    padding: 32px 28px 28px;
+    display: flex;
+    flex-direction: column;
+    transition: transform 260ms ease, box-shadow 260ms ease;
+  }
+  .card:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(0,58,82,0.10); }
+
+  .card.featured {
+    background: linear-gradient(160deg, #002d3f 0%, #005475 65%, #007299 100%);
+    color: #ffffff;
+    border-color: transparent;
+    box-shadow: 0 20px 40px rgba(0, 58, 82, 0.22);
+  }
+  .card.featured .muted { color: rgba(255,255,255,0.75); }
+  .card.featured .price-num { color: #ffffff; }
+  .card.featured .feature-check { color: var(--gold); }
+
+  .badge-popular {
+    position: absolute;
+    top: -14px;
+    right: 20px;
+    background: var(--gold);
+    color: var(--teal-900);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.6px;
+    padding: 6px 12px;
+    border-radius: 999px;
+    box-shadow: 0 4px 12px rgba(255, 212, 0, 0.4);
+  }
+
+  .plan-name {
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    margin: 0 0 4px;
+  }
+  .plan-tag {
+    font-size: 13px;
+    color: var(--muted);
+    margin: 0 0 22px;
+  }
+  .card.featured .plan-tag { color: rgba(255,255,255,0.8); }
+
+  .price-row { display: flex; align-items: baseline; gap: 6px; margin-bottom: 4px; }
+  .price-num {
+    font-size: 44px;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    color: var(--teal-900);
+    line-height: 1;
+  }
+  .price-per { font-size: 14px; color: var(--muted); font-weight: 500; }
+  .card.featured .price-per { color: rgba(255,255,255,0.75); }
+  .price-sub { font-size: 12px; color: var(--muted); margin-bottom: 24px; min-height: 18px; }
+  .card.featured .price-sub { color: rgba(255,255,255,0.7); }
+
+  ul.features {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  ul.features li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 14px;
+    line-height: 1.45;
+  }
+  .feature-check {
+    flex: 0 0 auto;
+    width: 18px;
+    height: 18px;
+    color: var(--teal-500);
+    margin-top: 1px;
+  }
+
+  .cta {
+    display: block;
+    text-align: center;
+    padding: 14px 20px;
+    border-radius: 12px;
+    font-size: 15px;
+    font-weight: 700;
+    text-decoration: none;
+    letter-spacing: 0.01em;
+    transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease;
+    margin-top: auto;
+  }
+  .cta-primary {
+    background: linear-gradient(135deg, var(--teal-700), var(--teal-500));
+    color: #ffffff;
+    box-shadow: 0 6px 16px rgba(0, 82, 117, 0.28);
+  }
+  .cta-primary:hover { transform: translateY(-1px); box-shadow: 0 10px 22px rgba(0, 82, 117, 0.36); }
+  .cta-featured {
+    background: var(--gold);
+    color: var(--teal-900);
+    box-shadow: 0 6px 16px rgba(255, 212, 0, 0.35);
+  }
+  .cta-featured:hover { transform: translateY(-1px); box-shadow: 0 10px 22px rgba(255, 212, 0, 0.5); }
+
+  .optout {
+    text-align: center;
+    margin-top: 28px;
+  }
+  .optout a {
+    color: var(--muted);
+    font-size: 13px;
+    text-decoration: none;
+    border-bottom: 1px dashed var(--muted);
+    padding-bottom: 1px;
+    transition: color 160ms ease, border-color 160ms ease;
+  }
+  .optout a:hover { color: var(--teal-700); border-color: var(--teal-700); }
+
+  @media (max-width: 720px) {
+    body { padding: 20px 14px 40px; }
+    .cards { grid-template-columns: 1fr; gap: 30px; }
+    .card { padding: 28px 22px 24px; }
+    .price-num { font-size: 38px; }
+    .badge-popular { top: -12px; right: 16px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <div class="toggle-wrap">
+    <div class="toggle" id="billingToggle">
+      <span class="toggle-thumb" id="thumb"></span>
+      <button class="active" data-billing="monthly">Monthly</button>
+      <button data-billing="annual">Annual <span class="save-badge">SAVE 17%</span></button>
+    </div>
+  </div>
+
+  <div class="cards">
+
+    <div class="card">
+      <h2 class="plan-name">Growth Suite</h2>
+      <p class="plan-tag">Everything you need to run a lead-generating business.</p>
+      <div class="price-row">
+        <span class="price-num" data-monthly="47" data-annual="39">$47</span>
+        <span class="price-per">/mo</span>
+      </div>
+      <div class="price-sub" data-monthly="Billed monthly" data-annual="$470 billed annually">Billed monthly</div>
+      <ul class="features">
+        <li><svg class="feature-check" viewBox="0 0 20 20" fill="currentColor"><path d="M16.7 5.3a1 1 0 0 1 0 1.4l-8 8a1 1 0 0 1-1.4 0l-4-4a1 1 0 1 1 1.4-1.4L8 12.6l7.3-7.3a1 1 0 0 1 1.4 0z"/></svg>Website hosting &amp; maintenance</li>
+        <li><svg class="feature-check" viewBox="0 0 20 20" fill="currentColor"><path d="M16.7 5.3a1 1 0 0 1 0 1.4l-8 8a1 1 0 0 1-1.4 0l-4-4a1 1 0 1 1 1.4-1.4L8 12.6l7.3-7.3a1 1 0 0 1 1.4 0z"/></svg>Booking calendar + forms</li>
+        <li><svg class="feature-check" viewBox="0 0 20 20" fill="currentColor"><path d="M16.7 5.3a1 1 0 0 1 0 1.4l-8 8a1 1 0 0 1-1.4 0l-4-4a1 1 0 1 1 1.4-1.4L8 12.6l7.3-7.3a1 1 0 0 1 1.4 0z"/></svg>Full CRM (up to 1,000 contacts)</li>
+        <li><svg class="feature-check" viewBox="0 0 20 20" fill="currentColor"><path d="M16.7 5.3a1 1 0 0 1 0 1.4l-8 8a1 1 0 0 1-1.4 0l-4-4a1 1 0 1 1 1.4-1.4L8 12.6l7.3-7.3a1 1 0 0 1 1.4 0z"/></svg>2-way SMS + email inbox</li>
+        <li><svg class="feature-check" viewBox="0 0 20 20" fill="currentColor"><path d="M16.7 5.3a1 1 0 0 1 0 1.4l-8 8a1 1 0 0 1-1.4 0l-4-4a1 1 0 1 1 1.4-1.4L8 12.6l7.3-7.3a1 1 0 0 1 1.4 0z"/></svg>Auto appointment reminders</li>
+        <li><svg class="feature-check" viewBox="0 0 20 20" fill="currentColor"><path d="M16.7 5.3a1 1 0 0 1 0 1.4l-8 8a1 1 0 0 1-1.4 0l-4-4a1 1 0 1 1 1.4-1.4L8 12.6l7.3-7.3a1 1 0 0 1 1.4 0z"/></svg>Payment collection + invoicing</li>
+        <li><svg class="feature-check" viewBox="0 0 20 20" fill="currentColor"><path d="M16.7 5.3a1 1 0 0 1 0 1.4l-8 8a1 1 0 0 1-1.4 0l-4-4a1 1 0 1 1 1.4-1.4L8 12.6l7.3-7.3a1 1 0 0 1 1.4 0z"/></svg>Mobile app + email support</li>
+      </ul>
+      <a class="cta cta-primary"
+         data-monthly="https://api.erio.ai/payment-link/6a617692a655fa0b802a5b57"
+         data-annual="https://api.erio.ai/payment-link/6a6176b97b99151a54040061"
+         href="https://api.erio.ai/payment-link/6a617692a655fa0b802a5b57">Choose Growth Suite</a>
+    </div>
+
+    <div class="card featured">
+      <span class="badge-popular">MOST POPULAR</span>
+      <h2 class="plan-name">Business Command Center</h2>
+      <p class="plan-tag">The full growth engine for businesses ready to scale.</p>
+      <div class="price-row">
+        <span class="price-num" data-monthly="97" data-annual="81">$97</span>
+        <span class="price-per">/mo</span>
+      </div>
+      <div class="price-sub" data-monthly="Billed monthly" data-annual="$970 billed annually">Billed monthly</div>
+      <ul class="features">
+        <li><svg class="feature-check" viewBox="0 0 20 20" fill="currentColor"><path d="M16.7 5.3a1 1 0 0 1 0 1.4l-8 8a1 1 0 0 1-1.4 0l-4-4a1 1 0 1 1 1.4-1.4L8 12.6l7.3-7.3a1 1 0 0 1 1.4 0z"/></svg>Everything in Growth Suite</li>
+        <li><svg class="feature-check" viewBox="0 0 20 20" fill="currentColor"><path d="M16.7 5.3a1 1 0 0 1 0 1.4l-8 8a1 1 0 0 1-1.4 0l-4-4a1 1 0 1 1 1.4-1.4L8 12.6l7.3-7.3a1 1 0 0 1 1.4 0z"/></svg>Unlimited contacts &amp; websites</li>
+        <li><svg class="feature-check" viewBox="0 0 20 20" fill="currentColor"><path d="M16.7 5.3a1 1 0 0 1 0 1.4l-8 8a1 1 0 0 1-1.4 0l-4-4a1 1 0 1 1 1.4-1.4L8 12.6l7.3-7.3a1 1 0 0 1 1.4 0z"/></svg>Sales pipelines &amp; opportunities</li>
+        <li><svg class="feature-check" viewBox="0 0 20 20" fill="currentColor"><path d="M16.7 5.3a1 1 0 0 1 0 1.4l-8 8a1 1 0 0 1-1.4 0l-4-4a1 1 0 1 1 1.4-1.4L8 12.6l7.3-7.3a1 1 0 0 1 1.4 0z"/></svg>Full marketing automations &amp; workflows</li>
+        <li><svg class="feature-check" viewBox="0 0 20 20" fill="currentColor"><path d="M16.7 5.3a1 1 0 0 1 0 1.4l-8 8a1 1 0 0 1-1.4 0l-4-4a1 1 0 1 1 1.4-1.4L8 12.6l7.3-7.3a1 1 0 0 1 1.4 0z"/></svg>Email marketing &amp; broadcast campaigns</li>
+        <li><svg class="feature-check" viewBox="0 0 20 20" fill="currentColor"><path d="M16.7 5.3a1 1 0 0 1 0 1.4l-8 8a1 1 0 0 1-1.4 0l-4-4a1 1 0 1 1 1.4-1.4L8 12.6l7.3-7.3a1 1 0 0 1 1.4 0z"/></svg>Social media planner (IG, FB, Google, LinkedIn)</li>
+        <li><svg class="feature-check" viewBox="0 0 20 20" fill="currentColor"><path d="M16.7 5.3a1 1 0 0 1 0 1.4l-8 8a1 1 0 0 1-1.4 0l-4-4a1 1 0 1 1 1.4-1.4L8 12.6l7.3-7.3a1 1 0 0 1 1.4 0z"/></svg>Missed-call text-back automation</li>
+        <li><svg class="feature-check" viewBox="0 0 20 20" fill="currentColor"><path d="M16.7 5.3a1 1 0 0 1 0 1.4l-8 8a1 1 0 0 1-1.4 0l-4-4a1 1 0 1 1 1.4-1.4L8 12.6l7.3-7.3a1 1 0 0 1 1.4 0z"/></svg>Advanced reputation &amp; review automation</li>
+        <li><svg class="feature-check" viewBox="0 0 20 20" fill="currentColor"><path d="M16.7 5.3a1 1 0 0 1 0 1.4l-8 8a1 1 0 0 1-1.4 0l-4-4a1 1 0 1 1 1.4-1.4L8 12.6l7.3-7.3a1 1 0 0 1 1.4 0z"/></svg>Priority support + monthly strategy check-in</li>
+      </ul>
+      <a class="cta cta-featured"
+         data-monthly="https://api.erio.ai/payment-link/6a6176f57b99151a54040063"
+         data-annual="https://api.erio.ai/payment-link/6a617711a655fa0b802a5b60"
+         href="https://api.erio.ai/payment-link/6a6176f57b99151a54040063">Choose Command Center</a>
+    </div>
+
+  </div>
+
+  <div class="optout">
+    <a href="#" id="filesOptOut">No thanks — just send me the website files</a>
+  </div>
+
+</div>
+
+<script>
+  (function(){
+    var toggle = document.getElementById('billingToggle');
+    var thumb = document.getElementById('thumb');
+    var btns = toggle.querySelectorAll('button');
+    var priceEls = document.querySelectorAll('.price-num');
+    var subEls = document.querySelectorAll('.price-sub');
+    var ctaEls = document.querySelectorAll('.cta');
+
+    function positionThumb(){
+      var active = toggle.querySelector('button.active');
+      thumb.style.width = active.offsetWidth + 'px';
+      thumb.style.transform = 'translateX(' + (active.offsetLeft - 5) + 'px)';
+    }
+
+    function setBilling(mode){
+      btns.forEach(function(b){ b.classList.toggle('active', b.dataset.billing === mode); });
+      priceEls.forEach(function(el){ el.textContent = '$' + el.dataset[mode]; });
+      subEls.forEach(function(el){ el.textContent = el.dataset[mode]; });
+      ctaEls.forEach(function(el){ el.href = el.dataset[mode]; });
+      positionThumb();
+    }
+
+    btns.forEach(function(b){
+      b.addEventListener('click', function(){ setBilling(b.dataset.billing); });
+    });
+
+    window.addEventListener('load', positionThumb);
+    window.addEventListener('resize', positionThumb);
+  })();
+</script>
+
+</body>
+</html>
