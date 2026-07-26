@@ -106,7 +106,6 @@
     box-shadow: 0 20px 40px rgba(0, 58, 82, 0.22);
   }
   .card.featured .muted { color: rgba(255,255,255,0.75); }
-  .card.featured .price-num { color: #ffffff; }
   .card.featured .feature-check { color: var(--gold); }
 
   .badge-popular {
@@ -138,38 +137,59 @@
 
   .price-row { display: flex; align-items: baseline; gap: 6px; margin-bottom: 4px; }
   .price-num {
-    font-size: 44px;
+    font-size: 30px;
     font-weight: 800;
-    letter-spacing: -0.03em;
-    color: var(--teal-900);
+    letter-spacing: -0.02em;
+    color: #ffffff;
     line-height: 1;
   }
-  .price-per { font-size: 14px; color: var(--muted); font-weight: 500; }
-  .card.featured .price-per { color: rgba(255,255,255,0.75); }
+  .price-per { font-size: 14px; color: rgba(255,255,255,0.85); font-weight: 600; }
   .price-sub { font-size: 12px; color: var(--muted); margin-bottom: 14px; min-height: 18px; }
   .card.featured .price-sub { color: rgba(255,255,255,0.7); }
 
-  .trial-badge {
+  /* Price + Trial pill (encapsulates both) */
+  .price-pill {
     display: inline-flex;
     align-items: center;
-    gap: 6px;
+    gap: 18px;
+    padding: 14px 22px;
+    border-radius: 999px;
+    margin-bottom: 12px;
+    max-width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .price-pill-primary {
     background: linear-gradient(135deg, var(--teal-700), var(--teal-500));
     color: #ffffff;
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 0.4px;
-    text-transform: uppercase;
-    padding: 6px 12px;
-    border-radius: 999px;
-    margin-bottom: 22px;
-    box-shadow: 0 4px 12px rgba(0, 82, 117, 0.28);
+    box-shadow: 0 6px 16px rgba(0, 82, 117, 0.28);
   }
-  .card.featured .trial-badge {
+  .price-pill-featured {
     background: var(--gold);
     color: var(--teal-900);
-    box-shadow: 0 4px 12px rgba(255, 212, 0, 0.35);
+    box-shadow: 0 6px 16px rgba(255, 212, 0, 0.35);
   }
-  .trial-badge svg { width: 12px; height: 12px; }
+  .price-pill-featured .price-num { color: var(--teal-900); }
+  .price-pill-featured .price-per { color: rgba(0,58,82,0.75); }
+  .pill-divider {
+    width: 1px;
+    height: 32px;
+    background: rgba(255,255,255,0.35);
+  }
+  .price-pill-featured .pill-divider {
+    background: rgba(0,58,82,0.28);
+  }
+  .pill-trial {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 30px;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    line-height: 1;
+  }
+  .pill-trial svg { width: 26px; height: 26px; flex: 0 0 auto; }
+  .pill-price { display: inline-flex; align-items: baseline; gap: 4px; line-height: 1; }
 
   ul.features {
     list-style: none;
@@ -281,7 +301,11 @@
     .cards { grid-template-columns: 1fr; gap: 30px; }
     .card { padding: 28px 22px 24px; }
     .card-owned { padding: 36px 22px 32px; }
-    .price-num { font-size: 38px; }
+    .price-num { font-size: 26px; }
+    .pill-trial { font-size: 22px; }
+    .pill-trial svg { width: 20px; height: 20px; }
+    .price-pill { padding: 12px 18px; gap: 12px; }
+    .pill-divider { height: 26px; }
     .badge-popular { top: -12px; right: 16px; }
   }
 </style>
@@ -303,15 +327,17 @@
     <div class="card" id="cardLaunchLab">
       <h2 class="plan-name">Launch Lab</h2>
       <p class="plan-tag">Your AI-powered creative studio — build, design, and grow.</p>
-      <div class="price-row">
-        <span class="price-num" data-monthly="47" data-annual="39">$47</span>
-        <span class="price-per">/mo</span>
+      <div class="price-pill price-pill-primary">
+        <div class="pill-price">
+          <span class="price-num" data-monthly="47" data-annual="39">$47</span><span class="price-per">/mo</span>
+        </div>
+        <div class="pill-divider"></div>
+        <div class="pill-trial">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          7-Day Free Trial
+        </div>
       </div>
       <div class="price-sub" data-monthly="Billed monthly after trial" data-annual="$470 billed annually after trial">Billed monthly after trial</div>
-      <span class="trial-badge">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-        7-Day Free Trial
-      </span>
       <ul class="features">
         <li><svg class="feature-check" viewBox="0 0 20 20" fill="currentColor"><path d="M16.7 5.3a1 1 0 0 1 0 1.4l-8 8a1 1 0 0 1-1.4 0l-4-4a1 1 0 1 1 1.4-1.4L8 12.6l7.3-7.3a1 1 0 0 1 1.4 0z"/></svg>Website: Hosting / Maintenance / Security</li>
         <li><svg class="feature-check" viewBox="0 0 20 20" fill="currentColor"><path d="M16.7 5.3a1 1 0 0 1 0 1.4l-8 8a1 1 0 0 1-1.4 0l-4-4a1 1 0 1 1 1.4-1.4L8 12.6l7.3-7.3a1 1 0 0 1 1.4 0z"/></svg>AI Application Builder</li>
@@ -331,15 +357,17 @@
       <span class="badge-popular">MOST POPULAR</span>
       <h2 class="plan-name">Business Base</h2>
       <p class="plan-tag">The full CRM &amp; command center for businesses ready to scale.</p>
-      <div class="price-row">
-        <span class="price-num" data-monthly="97" data-annual="81">$97</span>
-        <span class="price-per">/mo</span>
+      <div class="price-pill price-pill-featured">
+        <div class="pill-price">
+          <span class="price-num" data-monthly="97" data-annual="81">$97</span><span class="price-per">/mo</span>
+        </div>
+        <div class="pill-divider"></div>
+        <div class="pill-trial">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          7-Day Free Trial
+        </div>
       </div>
       <div class="price-sub" data-monthly="Billed monthly after trial" data-annual="$970 billed annually after trial">Billed monthly after trial</div>
-      <span class="trial-badge">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-        7-Day Free Trial
-      </span>
       <ul class="features">
         <li><svg class="feature-check feature-plus" viewBox="0 0 20 20" fill="currentColor"><path d="M10 2a1 1 0 0 1 1 1v6h6a1 1 0 1 1 0 2h-6v6a1 1 0 1 1-2 0v-6H3a1 1 0 1 1 0-2h6V3a1 1 0 0 1 1-1z"/></svg><strong>Everything In Launch Lab Plus:</strong></li>
         <li><svg class="feature-check" viewBox="0 0 20 20" fill="currentColor"><path d="M16.7 5.3a1 1 0 0 1 0 1.4l-8 8a1 1 0 0 1-1.4 0l-4-4a1 1 0 1 1 1.4-1.4L8 12.6l7.3-7.3a1 1 0 0 1 1.4 0z"/></svg>CRM (Unlimited Contacts)</li>
