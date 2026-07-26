@@ -143,8 +143,30 @@
   }
   .price-per { font-size: 14px; color: var(--muted); font-weight: 500; }
   .card.featured .price-per { color: rgba(255,255,255,0.75); }
-  .price-sub { font-size: 12px; color: var(--muted); margin-bottom: 24px; min-height: 18px; }
+  .price-sub { font-size: 12px; color: var(--muted); margin-bottom: 14px; min-height: 18px; }
   .card.featured .price-sub { color: rgba(255,255,255,0.7); }
+
+  .trial-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: linear-gradient(135deg, var(--teal-700), var(--teal-500));
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+    padding: 6px 12px;
+    border-radius: 999px;
+    margin-bottom: 22px;
+    box-shadow: 0 4px 12px rgba(0, 82, 117, 0.28);
+  }
+  .card.featured .trial-badge {
+    background: var(--gold);
+    color: var(--teal-900);
+    box-shadow: 0 4px 12px rgba(255, 212, 0, 0.35);
+  }
+  .trial-badge svg { width: 12px; height: 12px; }
 
   ul.features {
     list-style: none;
@@ -238,7 +260,11 @@
         <span class="price-num" data-monthly="47" data-annual="39">$47</span>
         <span class="price-per">/mo</span>
       </div>
-      <div class="price-sub" data-monthly="Billed monthly" data-annual="$470 billed annually">Billed monthly</div>
+      <div class="price-sub" data-monthly="Billed monthly after trial" data-annual="$470 billed annually after trial">Billed monthly after trial</div>
+      <span class="trial-badge">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        7-Day Free Trial
+      </span>
       <ul class="features">
         <li><svg class="feature-check" viewBox="0 0 20 20" fill="currentColor"><path d="M16.7 5.3a1 1 0 0 1 0 1.4l-8 8a1 1 0 0 1-1.4 0l-4-4a1 1 0 1 1 1.4-1.4L8 12.6l7.3-7.3a1 1 0 0 1 1.4 0z"/></svg>Website: Hosting / Maintenance / Security</li>
         <li><svg class="feature-check" viewBox="0 0 20 20" fill="currentColor"><path d="M16.7 5.3a1 1 0 0 1 0 1.4l-8 8a1 1 0 0 1-1.4 0l-4-4a1 1 0 1 1 1.4-1.4L8 12.6l7.3-7.3a1 1 0 0 1 1.4 0z"/></svg>AI Application Builder</li>
@@ -251,7 +277,7 @@
          rel="noopener"
          data-monthly="https://api.erio.ai/payment-link/6a6557707b99151a540407f1"
          data-annual="https://api.erio.ai/payment-link/6a655791a655fa0b802a62f9"
-         href="https://api.erio.ai/payment-link/6a6557707b99151a540407f1">Choose Launch Lab</a>
+         href="https://api.erio.ai/payment-link/6a6557707b99151a540407f1">Start My 7-Day Free Trial</a>
     </div>
 
     <div class="card featured">
@@ -262,7 +288,11 @@
         <span class="price-num" data-monthly="97" data-annual="81">$97</span>
         <span class="price-per">/mo</span>
       </div>
-      <div class="price-sub" data-monthly="Billed monthly" data-annual="$970 billed annually">Billed monthly</div>
+      <div class="price-sub" data-monthly="Billed monthly after trial" data-annual="$970 billed annually after trial">Billed monthly after trial</div>
+      <span class="trial-badge">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        7-Day Free Trial
+      </span>
       <ul class="features">
         <li><svg class="feature-check feature-plus" viewBox="0 0 20 20" fill="currentColor"><path d="M10 2a1 1 0 0 1 1 1v6h6a1 1 0 1 1 0 2h-6v6a1 1 0 1 1-2 0v-6H3a1 1 0 1 1 0-2h6V3a1 1 0 0 1 1-1z"/></svg><strong>Everything In Launch Lab Plus:</strong></li>
         <li><svg class="feature-check" viewBox="0 0 20 20" fill="currentColor"><path d="M16.7 5.3a1 1 0 0 1 0 1.4l-8 8a1 1 0 0 1-1.4 0l-4-4a1 1 0 1 1 1.4-1.4L8 12.6l7.3-7.3a1 1 0 0 1 1.4 0z"/></svg>CRM (Unlimited Contacts)</li>
@@ -276,7 +306,7 @@
          rel="noopener"
          data-monthly="https://api.erio.ai/payment-link/6a655808a655fa0b802a62fa"
          data-annual="https://api.erio.ai/payment-link/6a65581f7b99151a540407f3"
-         href="https://api.erio.ai/payment-link/6a655808a655fa0b802a62fa">Choose Business Base</a>
+         href="https://api.erio.ai/payment-link/6a655808a655fa0b802a62fa">Start My 7-Day Free Trial</a>
     </div>
 
   </div>
