@@ -11,6 +11,9 @@
     --teal-700: #005475;
     --teal-500: #007299;
     --gold:     #ffd400;
+    --green-500:#22c55e;
+    --green-600:#16a34a;
+    --green-50: #f0fdf4;
     --ink:      #17252a;
     --muted:    #536770;
     --line:     #e2ecef;
@@ -230,10 +233,54 @@
   }
   .optout a:hover { color: var(--teal-700); border-color: var(--teal-700); }
 
+  /* Owned state */
+  .cards.owned-only { grid-template-columns: 1fr; max-width: 560px; margin: 0 auto; }
+  .cards.single-plan { grid-template-columns: 1fr; max-width: 560px; margin: 0 auto; }
+  .card-owned {
+    background: #ffffff;
+    color: var(--ink);
+    border: 2px solid var(--green-500);
+    border-radius: 20px;
+    padding: 44px 32px 40px;
+    text-align: center;
+    box-shadow: 0 12px 28px rgba(34, 197, 94, 0.12);
+  }
+  .owned-check-wrap {
+    width: 76px;
+    height: 76px;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    background: var(--green-50);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 6px 18px rgba(34, 197, 94, 0.25);
+  }
+  .owned-check-wrap svg {
+    width: 40px;
+    height: 40px;
+    color: var(--green-600);
+    stroke-width: 3;
+  }
+  .card-owned h2 {
+    font-size: 22px;
+    letter-spacing: -0.01em;
+    color: var(--teal-900);
+    margin: 0 0 8px;
+    line-height: 1.25;
+  }
+  .card-owned p {
+    font-size: 14px;
+    color: var(--muted);
+    margin: 0;
+    line-height: 1.5;
+  }
+
   @media (max-width: 720px) {
     body { padding: 20px 14px 40px; }
     .cards { grid-template-columns: 1fr; gap: 30px; }
     .card { padding: 28px 22px 24px; }
+    .card-owned { padding: 36px 22px 32px; }
     .price-num { font-size: 38px; }
     .badge-popular { top: -12px; right: 16px; }
   }
@@ -251,9 +298,9 @@
     </div>
   </div>
 
-  <div class="cards">
+  <div class="cards" id="cardsWrap">
 
-    <div class="card">
+    <div class="card" id="cardLaunchLab">
       <h2 class="plan-name">Launch Lab</h2>
       <p class="plan-tag">Your AI-powered creative studio — build, design, and grow.</p>
       <div class="price-row">
@@ -280,7 +327,7 @@
          href="https://api.erio.ai/payment-link/6a6557707b99151a540407f1">Start My 7-Day Free Trial</a>
     </div>
 
-    <div class="card featured">
+    <div class="card featured" id="cardBusinessBase">
       <span class="badge-popular">MOST POPULAR</span>
       <h2 class="plan-name">Business Base</h2>
       <p class="plan-tag">The full CRM &amp; command center for businesses ready to scale.</p>
@@ -309,9 +356,17 @@
          href="https://api.erio.ai/payment-link/6a655808a655fa0b802a62fa">Start My 7-Day Free Trial</a>
     </div>
 
+    <div class="card-owned" id="cardOwned" style="display:none;">
+      <div class="owned-check-wrap">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+      </div>
+      <h2>You Already Own This</h2>
+      <p id="ownedText">Your hosting plan is active on your account.</p>
+    </div>
+
   </div>
 
-  <div class="optout">
+  <div class="optout" id="optoutWrap">
     <a href="./files-warning/">No thanks — just send me the website files</a>
   </div>
 
@@ -328,6 +383,30 @@
     var filesLink = document.getElementById('filesOptOut');
 
     var parentQS = window.location.search || '';
+    var params = new URLSearchParams(parentQS);
+    var tier = (params.get('tier') || '').trim().toLowerCase();
+
+    var cardsWrap = document.getElementById('cardsWrap');
+    var cardLaunchLab = document.getElementById('cardLaunchLab');
+    var cardBusinessBase = document.getElementById('cardBusinessBase');
+    var cardOwned = document.getElementById('cardOwned');
+    var optoutWrap = document.getElementById('optoutWrap');
+    var toggleWrap = document.querySelector('.toggle-wrap');
+    var ownedText = document.getElementById('ownedText');
+
+    // Handle tier state
+    if (tier === 'business base') {
+      cardLaunchLab.style.display = 'none';
+      cardBusinessBase.style.display = 'none';
+      cardOwned.style.display = 'block';
+      if (ownedText) ownedText.textContent = 'Your Business Base plan is active on your account.';
+      if (toggleWrap) toggleWrap.style.display = 'none';
+      if (optoutWrap) optoutWrap.style.display = 'none';
+      cardsWrap.classList.add('owned-only');
+    } else if (tier === 'launch lab') {
+      cardLaunchLab.style.display = 'none';
+      cardsWrap.classList.add('single-plan');
+    }
 
     function withParams(baseUrl){
       if (!parentQS) return baseUrl;

@@ -11,6 +11,9 @@
     --teal-700: #005475;
     --teal-500: #007299;
     --gold:     #ffd400;
+    --green-500:#22c55e;
+    --green-600:#16a34a;
+    --green-50: #f0fdf4;
     --ink:      #17252a;
     --muted:    #536770;
     --line:     #e2ecef;
@@ -98,9 +101,51 @@
   }
   .cta:hover { transform: translateY(-1px); box-shadow: 0 10px 22px rgba(255, 212, 0, 0.5); }
 
+  /* Owned state */
+  .card-owned {
+    background: #ffffff;
+    color: var(--ink);
+    border: 2px solid var(--green-500);
+    border-radius: 20px;
+    padding: 44px 32px 40px;
+    text-align: center;
+    box-shadow: 0 12px 28px rgba(34, 197, 94, 0.12);
+  }
+  .owned-check-wrap {
+    width: 76px;
+    height: 76px;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    background: var(--green-50);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 6px 18px rgba(34, 197, 94, 0.25);
+  }
+  .owned-check-wrap svg {
+    width: 40px;
+    height: 40px;
+    color: var(--green-600);
+    stroke-width: 3;
+  }
+  .card-owned h2 {
+    font-size: 22px;
+    letter-spacing: -0.01em;
+    color: var(--teal-900);
+    margin: 0 0 8px;
+    line-height: 1.25;
+  }
+  .card-owned p {
+    font-size: 14px;
+    color: var(--muted);
+    margin: 0;
+    line-height: 1.5;
+  }
+
   @media (max-width: 620px) {
     body { padding: 20px 14px 40px; }
     .card { padding: 28px 22px 24px; }
+    .card-owned { padding: 36px 22px 32px; }
     .price-num { font-size: 38px; }
   }
 </style>
@@ -109,7 +154,7 @@
 
 <div class="wrap">
 
-  <div class="card">
+  <div class="card" id="cardBuy">
     <h2>Google Business Profile Optimization</h2>
     <p class="tag">Get found first on Google. We fully optimize, actively manage, and continuously fine-tune your Google Business Profile so more local customers find you and choose you.</p>
     <div class="price-row">
@@ -127,12 +172,31 @@
     <a class="cta" id="gbpCta" target="_blank" rel="noopener" href="https://api.erio.ai/payment-link/6a650c1ba655fa0b802a625e">Optimize My Profile</a>
   </div>
 
+  <div class="card-owned" id="cardOwned" style="display:none;">
+    <div class="owned-check-wrap">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+    </div>
+    <h2>You Already Own This</h2>
+    <p>Your Google Business Profile Optimization is active on your account.</p>
+  </div>
+
 </div>
 
 <script>
   (function(){
-    var qs = window.location.search || '';
+    var params = new URLSearchParams(window.location.search || '');
+    var owned = (params.get('owned') || '').trim().toLowerCase();
+    var cardBuy = document.getElementById('cardBuy');
+    var cardOwned = document.getElementById('cardOwned');
     var cta = document.getElementById('gbpCta');
+
+    if (owned === 'yes') {
+      cardBuy.style.display = 'none';
+      cardOwned.style.display = 'block';
+      return;
+    }
+
+    var qs = window.location.search || '';
     if (qs && cta) {
       var sep = cta.href.indexOf('?') === -1 ? '?' : '&';
       cta.href = cta.href + sep + qs.substring(1);
