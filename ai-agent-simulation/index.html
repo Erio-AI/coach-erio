@@ -19,5 +19,17 @@
 
 <script src="https://widgets.leadconnectorhq.com/loader.js" data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js" data-widget-id="6a68ebfc89b8c5f4e826d33e"></script>
 
+<script>
+  (function(){
+    if (window.self !== window.top) {
+      document.addEventListener('click', function(e){
+        e.preventDefault();
+        e.stopPropagation();
+        window.open(window.location.href, '_blank');
+      }, true);
+    }
+  })();
+</script>
+
 </body>
 </html>
