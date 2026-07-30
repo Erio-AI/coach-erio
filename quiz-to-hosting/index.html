@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Website Setup | Erio</title>
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: #ffffff; }
+  iframe {
+    border: none;
+    width: 100%;
+    min-height: 1400px;
+    display: block;
+    background: #ffffff;
+  }
+</style>
+</head>
+<body>
+
+<iframe
+  id="innerFrame"
+  data-quiz="https://api.erio.ai/widget/quiz/t6Aw0Zqv9V2u18RUrog8"
+  data-hosting="https://coach.erio.ai/package-tier/"
+  src="about:blank"
+  scrolling="auto"
+  title="Website Setup"
+></iframe>
+
+<script src="https://api.erio.ai/js/form_embed.js"></script>
+<script>
+  (function(){
+    var frame = document.getElementById('innerFrame');
+    var quizBase = frame.getAttribute('data-quiz');
+    var hostingBase = frame.getAttribute('data-hosting');
+
+    // Forward parent URL query params (email, first_name, etc.) into the quiz
+    var qs = window.location.search || '';
+    frame.src = quizBase + (qs || '');
+
+    var swapped = false;
+    function swapToHosting(){
+      if (swapped) return;
+      swapped = true;
+      var sep = hostingBase.indexOf('?') === -1 ? '?' : '&';
+      frame.src = hostingBase + (qs ? sep + qs.substring(1) : '');
+    }
+
+    // Listen for GHL form/quiz submission messages
+    window.addEventListener('message', function(e){
+      var d = e.data;
+      if (!d) return;
+      var text = '';
+      try {
+        text = typeof d === 'string' ? d : JSON.stringify(d);
+      } catch(err) { return; }
+      var t = text.toLowerCase();
+      // Common GHL submission signals
+      if (
+        t.indexOf('form_submit') !== -1 ||
+        t.indexOf('formsubmit') !== -1 ||
+        t.indexOf('form submitted') !== -1 ||
+        t.indexOf('quiz_submit') !== -1 ||
+        t.indexOf('quizsubmit') !== -1 ||
+        t.indexOf('submission_success') !== -1 ||
+        t.indexOf('form-complete') !== -1 ||
+        (d && d.type && String(d.type).toLowerCase().indexOf('submit') !== -1) ||
+        (d && d.event && String(d.event).toLowerCase().indexOf('submit') !== -1)
+      ) {
+        swapToHosting();
+      }
+    });
+  })();
+</script>
+
+</body>
+</html>
