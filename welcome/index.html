@@ -166,8 +166,61 @@
   .badge svg { width: 14px; height: 14px; }
   .badge-wrap { text-align: center; }
 
+  /* Footer */
+  .site-footer {
+    margin-top: 80px;
+    padding: 48px 20px 32px;
+    border-top: 1px solid var(--line);
+    background: #fafcfd;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  }
+  .footer-inner {
+    max-width: 1080px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.2fr 1fr 1.4fr;
+    gap: 48px;
+  }
+  .footer-col h4 {
+    font-size: 18px;
+    color: #3e3e3e;
+    margin: 0 0 12px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+  .footer-col .divider-line {
+    height: 1px;
+    background: var(--line);
+    margin: 0 0 18px;
+    width: 60px;
+  }
+  .footer-col p, .footer-col a {
+    font-size: 14px;
+    color: #6a6a6a;
+    line-height: 1.9;
+    margin: 0;
+    text-decoration: none;
+  }
+  .footer-col a:hover { color: var(--teal-700); }
+  .footer-col .copyright {
+    font-size: 14px;
+    color: #898989;
+    line-height: 1.4;
+    margin-bottom: 12px;
+  }
+  .footer-col .disclaimer {
+    font-size: 11px;
+    color: #7a7a7a;
+    line-height: 1.5;
+    margin-bottom: 12px;
+  }
+  .footer-links a { display: block; }
+  @media (max-width: 720px) {
+    .footer-inner { grid-template-columns: 1fr; gap: 32px; }
+  }
+
   @media (max-width: 620px) {
-    body { padding: 24px 14px 40px; }
+    body { padding: 24px 14px 0; }
     .video-frame { margin-bottom: 40px; }
     .play-btn { width: 68px; height: 68px; margin-bottom: 12px; }
     .play-btn svg { width: 26px; height: 26px; }
@@ -208,6 +261,33 @@
   </a>
 
 </div>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+
+    <div class="footer-col">
+      <p class="copyright">COPYRIGHT © 2026. All Rights Reserved.</p>
+    </div>
+
+    <div class="footer-col">
+      <h4>Erio</h4>
+      <div class="divider-line"></div>
+      <div class="footer-links">
+        <a href="https://coach.erio.ai/privacypolicy" target="_blank" rel="noopener">Privacy Policy</a>
+        <a href="https://coach.erio.ai/termsofservice" target="_blank" rel="noopener">Terms Of Service</a>
+        <a href="mailto:support@erio.ai">Contact Us</a>
+      </div>
+    </div>
+
+    <div class="footer-col">
+      <h4>Disclaimer</h4>
+      <div class="divider-line"></div>
+      <p class="disclaimer">This site is not part of the Facebook Site or Facebook Inc. Additionally, this site is NOT endorsed by Facebook in any way. FACEBOOK is a trademark of FACEBOOK, Inc.</p>
+      <p class="disclaimer">We can not and do not make any guarantees about your ability to get results or earn any money with our ideas, information, tools, or strategies. What we can guarantee is your satisfaction with our training. We give you a 100% satisfaction guarantee on the products we sell, so if you are not happy for any reason with the quality of our designs or training, you can request a refund or additional support &amp; our team members will assist you. Additionally, we also happily welcome suggestions &amp; or requests via our support email here: support@erio.ai</p>
+    </div>
+
+  </div>
+</footer>
 
 </body>
 </html>
