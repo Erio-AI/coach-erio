@@ -166,57 +166,61 @@
   .badge svg { width: 14px; height: 14px; }
   .badge-wrap { text-align: center; }
 
-  /* Footer */
+  /* Footer — cloned from coach.erio.ai */
   .site-footer {
     margin-top: 80px;
-    padding: 48px 20px 32px;
-    border-top: 1px solid var(--line);
-    background: #fafcfd;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    padding: 60px 20px 40px;
+    background: #ffffff;
+    font-family: "Basiersquare", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
   }
   .footer-inner {
-    max-width: 1080px;
+    max-width: 1200px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: 1.2fr 1fr 1.4fr;
-    gap: 48px;
+    grid-template-columns: 30% 35% 35%;
+    gap: 0;
+    align-items: start;
   }
-  .footer-col h4 {
-    font-size: 18px;
+  .footer-col { padding: 0 4%; }
+  .footer-col:first-child { padding-left: 0; }
+  .footer-col:last-child { padding-right: 0; }
+  .footer-logo { display: block; height: 35px; width: auto; max-width: 107px; margin: 0 0 8px; }
+  .footer-brand-tag { font-size: 12px; color: #3e3e3e; line-height: 1; margin: 0 0 26px; font-family: "Basiersquare", -apple-system, sans-serif; }
+  .footer-tagline { font-size: 16px; color: #3e3e3e; line-height: 1.4; margin: 0 0 22px; font-family: "Basiersquare", -apple-system, sans-serif; }
+  .footer-copyright { font-size: 15px; color: rgb(137, 137, 137); font-family: Helvetica, Arial, sans-serif; margin: 0; text-align: left; }
+  .footer-header {
+    font-size: 20px;
+    color: rgb(62, 62, 62);
+    font-weight: 700;
+    margin: 0 0 12px;
+    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  }
+  .footer-hr {
+    height: 1px;
+    background: var(--teal-700);
+    border: none;
+    margin: 0 0 18px;
+    width: 100%;
+  }
+  .footer-links a {
+    display: block;
+    color: rgb(106, 106, 106);
+    font-size: 16px;
+    line-height: 2;
+    text-decoration: none;
+    font-family: "Basiersquare", -apple-system, sans-serif;
+  }
+  .footer-links a:hover { color: var(--teal-700); }
+  .footer-disclaimer {
+    font-size: 11px;
+    line-height: 1.4;
     color: #3e3e3e;
     margin: 0 0 12px;
-    font-weight: 700;
-    letter-spacing: -0.01em;
+    font-family: "Basiersquare", -apple-system, sans-serif;
   }
-  .footer-col .divider-line {
-    height: 1px;
-    background: var(--line);
-    margin: 0 0 18px;
-    width: 60px;
-  }
-  .footer-col p, .footer-col a {
-    font-size: 14px;
-    color: #6a6a6a;
-    line-height: 1.9;
-    margin: 0;
-    text-decoration: none;
-  }
-  .footer-col a:hover { color: var(--teal-700); }
-  .footer-col .copyright {
-    font-size: 14px;
-    color: #898989;
-    line-height: 1.4;
-    margin-bottom: 12px;
-  }
-  .footer-col .disclaimer {
-    font-size: 11px;
-    color: #7a7a7a;
-    line-height: 1.5;
-    margin-bottom: 12px;
-  }
-  .footer-links a { display: block; }
-  @media (max-width: 720px) {
-    .footer-inner { grid-template-columns: 1fr; gap: 32px; }
+  @media (max-width: 900px) {
+    .footer-inner { grid-template-columns: 1fr; gap: 40px; }
+    .footer-col { padding: 0; }
   }
 
   @media (max-width: 620px) {
@@ -266,24 +270,27 @@
   <div class="footer-inner">
 
     <div class="footer-col">
-      <p class="copyright">COPYRIGHT © 2026. All Rights Reserved.</p>
+      <img class="footer-logo" src="/coach-source_files/erio-logo-emerald.png" alt="Erio">
+      <p class="footer-brand-tag">A Erio LLC Technology Brand</p>
+      <p class="footer-tagline">Get Your Online Coaching Website &amp; Bonuses Starting At Just $27 Today!</p>
+      <p class="footer-copyright">COPYRIGHT © 2026. All Rights Reserved.</p>
     </div>
 
     <div class="footer-col">
-      <h4>Erio</h4>
-      <div class="divider-line"></div>
+      <h4 class="footer-header">Erio</h4>
+      <hr class="footer-hr">
       <div class="footer-links">
-        <a href="https://coach.erio.ai/privacypolicy" target="_blank" rel="noopener">Privacy Policy</a>
-        <a href="https://coach.erio.ai/termsofservice" target="_blank" rel="noopener">Terms Of Service</a>
-        <a href="mailto:support@erio.ai">Contact Us</a>
+        <a href="https://coach.erio.ai/privacypolicy" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
+        <a href="https://coach.erio.ai/termsofservice" target="_blank" rel="noopener noreferrer">Terms Of Service</a>
+        <a href="mailto:support@erio.ai">Contact Us: support@erio.ai</a>
       </div>
     </div>
 
     <div class="footer-col">
-      <h4>Disclaimer</h4>
-      <div class="divider-line"></div>
-      <p class="disclaimer">This site is not part of the Facebook Site or Facebook Inc. Additionally, this site is NOT endorsed by Facebook in any way. FACEBOOK is a trademark of FACEBOOK, Inc.</p>
-      <p class="disclaimer">We can not and do not make any guarantees about your ability to get results or earn any money with our ideas, information, tools, or strategies. What we can guarantee is your satisfaction with our training. We give you a 100% satisfaction guarantee on the products we sell, so if you are not happy for any reason with the quality of our designs or training, you can request a refund or additional support &amp; our team members will assist you. Additionally, we also happily welcome suggestions &amp; or requests via our support email here: support@erio.ai</p>
+      <h4 class="footer-header">Disclaimer</h4>
+      <hr class="footer-hr">
+      <p class="footer-disclaimer">This site is not part of the Facebook Site or Facebook Inc. Additionally, this site is NOT endorsed by Facebook in any way. FACEBOOK is a trademark of FACEBOOK, Inc.</p>
+      <p class="footer-disclaimer">We can not and do not make any guarantees about your ability to get results or earn any money with our ideas, information, tools, or strategies. What we can guarantee is your satisfaction with our training. We give you a 100% satisfaction guarantee on the products we sell, so if you are not happy for any reason with the quality of our designs or training, you can request a refund or additional support &amp; our team members will assist you. Additionally, we also happily welcome suggestions &amp; or requests via our support email here: support@erio.ai</p>
     </div>
 
   </div>
