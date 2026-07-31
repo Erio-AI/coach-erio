@@ -7,6 +7,15 @@
 <link rel="shortcut icon" type="image/png" href="/favicon.png">
 <meta name="robots" content="noindex, nofollow">
 <title>Your Order Has Been Confirmed | Erio</title>
+
+<!-- Swift theme stylesheets (needed for the footer to look identical to coach.erio.ai) -->
+<link rel="stylesheet" href="https://static.web-repository.com/styles/platform.client.min.css?v=1194">
+<link rel="stylesheet" href="https://static.web-repository.com/t/theme25/css/trunk.min.css?v=1194">
+<link rel="stylesheet" media="(max-width: 1024px)" href="https://static.web-repository.com/t/theme25/css/trunk-1024.min.css?v=1194">
+<link rel="stylesheet" media="(max-width: 768px)" href="https://static.web-repository.com/t/theme25/css/trunk-768.min.css?v=1194">
+<link rel="stylesheet" media="(max-width: 480px)" href="https://static.web-repository.com/t/theme25/css/trunk-480.min.css?v=1194">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?display=swap&family=Open+Sans:regular%7CPlayfair+Display:italic%7CRoboto:300%7CHammersmith+One:regular%7CInter:regular%7CMontserrat:800%7CTitillium+Web:regular">
+
 <style>
   :root {
     --teal-900: #003a52;
@@ -19,19 +28,22 @@
     --line:     #e2ecef;
     --bg:       #ffffff;
   }
-  * { box-sizing: border-box; }
-  html, body { margin: 0; padding: 0; }
+  html, body { margin: 0; padding: 0; background: var(--bg); }
   body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     color: var(--ink);
-    background: var(--bg);
     line-height: 1.55;
     -webkit-font-smoothing: antialiased;
-    padding: 40px 20px 60px;
   }
-  .wrap { max-width: 860px; margin: 0 auto; }
 
-  h1 {
+  .top-wrap {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 40px 20px 60px;
+    box-sizing: border-box;
+  }
+
+  h1.title {
     text-align: center;
     font-size: clamp(28px, 3.8vw, 40px);
     letter-spacing: -0.02em;
@@ -56,7 +68,6 @@
     background: #0b1e28;
     overflow: hidden;
     box-shadow: 0 24px 60px rgba(0, 58, 82, 0.18);
-    margin-bottom: 56px;
   }
   .video-frame::before {
     content: '';
@@ -101,54 +112,6 @@
     margin-left: 4px;
   }
 
-  .divider {
-    height: 1px;
-    background: linear-gradient(90deg, transparent, var(--line), transparent);
-    margin: 0 0 48px;
-  }
-
-  h2 {
-    text-align: center;
-    font-size: clamp(24px, 3vw, 30px);
-    letter-spacing: -0.015em;
-    color: var(--teal-900);
-    margin: 0 0 14px;
-    line-height: 1.2;
-    font-weight: 800;
-  }
-  .sub {
-    text-align: center;
-    font-size: 15px;
-    color: var(--muted);
-    margin: 0 auto 32px;
-    max-width: 620px;
-  }
-
-  .cta {
-    display: block;
-    text-align: center;
-    padding: 22px 28px;
-    background: linear-gradient(135deg, var(--teal-700), var(--teal-500));
-    color: #ffffff;
-    font-size: 18px;
-    font-weight: 700;
-    text-decoration: none;
-    border-radius: 14px;
-    box-shadow: 0 12px 28px rgba(0, 82, 117, 0.32);
-    letter-spacing: 0.01em;
-    transition: transform 180ms cubic-bezier(0.4, 0, 0.2, 1), box-shadow 180ms cubic-bezier(0.4, 0, 0.2, 1);
-  }
-  .cta:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 18px 40px rgba(0, 82, 117, 0.42);
-  }
-  .cta .arrow {
-    display: inline-block;
-    margin-left: 6px;
-    transition: transform 220ms ease;
-  }
-  .cta:hover .arrow { transform: translateX(4px); }
-
   .badge {
     display: inline-flex;
     align-items: center;
@@ -166,75 +129,16 @@
   .badge svg { width: 14px; height: 14px; }
   .badge-wrap { text-align: center; }
 
-  /* Footer — cloned from coach.erio.ai */
-  .site-footer {
-    margin-top: 80px;
-    padding: 60px 20px 40px;
-    background: #ffffff;
-    font-family: "Basiersquare", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
-  }
-  .footer-inner {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 30% 35% 35%;
-    gap: 0;
-    align-items: start;
-  }
-  .footer-col { padding: 0 4%; }
-  .footer-col:first-child { padding-left: 0; }
-  .footer-col:last-child { padding-right: 0; }
-  .footer-logo { display: block; height: 35px; width: auto; max-width: 107px; margin: 0 0 8px; }
-  .footer-brand-tag { font-size: 12px; color: #3e3e3e; line-height: 1; margin: 0 0 26px; font-family: "Basiersquare", -apple-system, sans-serif; }
-  .footer-tagline { font-size: 16px; color: #3e3e3e; line-height: 1.4; margin: 0 0 22px; font-family: "Basiersquare", -apple-system, sans-serif; }
-  .footer-copyright { font-size: 15px; color: rgb(137, 137, 137); font-family: Helvetica, Arial, sans-serif; margin: 0; text-align: left; }
-  .footer-header {
-    font-size: 20px;
-    color: rgb(62, 62, 62);
-    font-weight: 700;
-    margin: 0 0 12px;
-    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
-  }
-  .footer-hr {
-    height: 1px;
-    background: var(--teal-700);
-    border: none;
-    margin: 0 0 18px;
-    width: 100%;
-  }
-  .footer-links a {
-    display: block;
-    color: rgb(106, 106, 106);
-    font-size: 16px;
-    line-height: 2;
-    text-decoration: none;
-    font-family: "Basiersquare", -apple-system, sans-serif;
-  }
-  .footer-links a:hover { color: var(--teal-700); }
-  .footer-disclaimer {
-    font-size: 11px;
-    line-height: 1.4;
-    color: #3e3e3e;
-    margin: 0 0 12px;
-    font-family: "Basiersquare", -apple-system, sans-serif;
-  }
-  @media (max-width: 900px) {
-    .footer-inner { grid-template-columns: 1fr; gap: 40px; }
-    .footer-col { padding: 0; }
-  }
-
   @media (max-width: 620px) {
-    body { padding: 24px 14px 0; }
-    .video-frame { margin-bottom: 40px; }
+    .top-wrap { padding: 24px 14px 40px; }
     .play-btn { width: 68px; height: 68px; margin-bottom: 12px; }
     .play-btn svg { width: 26px; height: 26px; }
-    .cta { padding: 18px 22px; font-size: 16px; }
   }
 </style>
 </head>
 <body>
 
-<div class="wrap">
+<div class="top-wrap">
 
   <div class="badge-wrap">
     <span class="badge">
@@ -243,7 +147,7 @@
     </span>
   </div>
 
-  <h1>Your Order Has Been Confirmed!</h1>
+  <h1 class="title">Your Order Has Been Confirmed!</h1>
   <p class="lede">Just watch the short video below to see your next steps to getting everything you've ordered.</p>
 
   <div class="video-frame">
@@ -255,46 +159,161 @@
     </div>
   </div>
 
-  <div class="divider"></div>
-
-  <h2>Next Step: Access Your Setup Portal</h2>
-  <p class="sub">Click the button below to log in to your Setup Portal, where you'll submit your business details and unlock everything you just ordered.</p>
-
-  <a href="https://portal.erio.ai/login" class="cta">
-    Go To My Setup Portal <span class="arrow">→</span>
-  </a>
-
 </div>
 
-<footer class="site-footer">
-  <div class="footer-inner">
+<!-- EXACT FOOTER FROM coach.erio.ai (verbatim copy) -->
+<div id="container-widget-1752263698607" data-type="Container" class="grid-row
+     stretched-mobile stretched-tablet" data-delay="" style="padding-bottom:3.09783%;
+    padding-top: 5.21739%; padding-left: 0;
+    background-color: rgba(239, 241, 244, 1);
+      background-position: center center;
+      background-repeat: repeat;
+      background-size: auto;
 
-    <div class="footer-col">
-      <img class="footer-logo" src="/coach-source_files/erio-logo-emerald.png" alt="Erio">
-      <p class="footer-brand-tag">A Erio LLC Technology Brand</p>
-      <p class="footer-tagline">Get Your Online Coaching Website &amp; Bonuses Starting At Just $27 Today!</p>
-      <p class="footer-copyright">COPYRIGHT © 2026. All Rights Reserved.</p>
-    </div>
+    background-image: none;">
+    <div class="grid-content ">
+        <div class="grid-column    " style="width: 30%;
+               padding-left:0%;padding-right:4%;background-color: transparent;
+               background-image: none;
 
-    <div class="footer-col">
-      <h4 class="footer-header">Erio</h4>
-      <hr class="footer-hr">
-      <div class="footer-links">
-        <a href="https://coach.erio.ai/privacypolicy" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
-        <a href="https://coach.erio.ai/termsofservice" target="_blank" rel="noopener noreferrer">Terms Of Service</a>
-        <a href="mailto:support@erio.ai">Contact Us: support@erio.ai</a>
-      </div>
-    </div>
+                 background-size: cover;
+                 background-repeat: no-repeat;
+                 background-position: center center;
 
-    <div class="footer-col">
-      <h4 class="footer-header">Disclaimer</h4>
-      <hr class="footer-hr">
-      <p class="footer-disclaimer">This site is not part of the Facebook Site or Facebook Inc. Additionally, this site is NOT endorsed by Facebook in any way. FACEBOOK is a trademark of FACEBOOK, Inc.</p>
-      <p class="footer-disclaimer">We can not and do not make any guarantees about your ability to get results or earn any money with our ideas, information, tools, or strategies. What we can guarantee is your satisfaction with our training. We give you a 100% satisfaction guarantee on the products we sell, so if you are not happy for any reason with the quality of our designs or training, you can request a refund or additional support &amp; our team members will assist you. Additionally, we also happily welcome suggestions &amp; or requests via our support email here: support@erio.ai</p>
-    </div>
+               top: 0px;
 
+               ">
+
+            <div class="widget-row ">
+                <div class="widget
+        widgetResponsive textWidget col20" id="text-widget-1752263698606" data-type="TextWidget" data-delay="" data-animation-duration="" data-animation-delay="" data-animation="lazyAnimation-" style="margin-top: 0%; margin-left: 0px;">
+    <div class="text-widget-content"><h3 style="margin: 0; line-height: 1;"><img src="/coach-source_files/erio-logo-emerald.png" alt="Erio" style="display: inline-block; height: auto !important; width: auto !important; max-height: clamp(30px, 5vw, 35px) !important; max-width: min(107px, 38vw) !important; vertical-align: middle;"></h3></div>
   </div>
-</footer>
+</div>
+            <div class="widget-row ">
+                <div class="widget
+        widgetResponsive textWidget col20" id="text-widget-1752249376153" data-type="TextWidget" data-delay="" data-animation-duration="" data-animation-delay="" data-animation="lazyAnimation-" style="margin-top: 0%; margin-left: 0px;">
+    <div class="text-widget-content"><p style="line-height: 1;"><span style="font-size: 12px; font-family: Basiersquare;">A Erio LLC Technology Brand</span></p></div>
+  </div>
+</div>
+            <div class="widget-row ">
+                <div class="widget
+        widgetResponsive textWidget col20" id="text-widget-1752263698605" data-type="TextWidget" data-delay="" data-animation-duration="" data-animation-delay="" data-animation="lazyAnimation-" style="margin-top: 5.50239%; margin-left: 0px;">
+    <div class="text-widget-content"><p><span style="font-size: 16px;">Get Your Online Coaching Website &amp; Bonuses Starting At Just $27 Today!</span></p></div>
+  </div>
+</div>
+            <div class="widget-row ">
+                <div class="widget
+        widgetResponsive socialMediaWidget col20" data-type="SocialMediaWidget" data-delay="" data-animation-duration="" data-animation-delay="" data-animation="lazyAnimation-" style="margin-top: 2.87081%; margin-left: 0%;" id="socialmedia-widget-1752263698604">
+    <style type="text/css">
+        #socialmedia-widget-1752263698604 .social-media-button i {
+        background: transparent;color: rgba(62, 62, 62, 1);
+        font-size: 14px;
+        height: 14px;
+        width: 14px;
+        line-height: 14px;
+        border-radius: 0px;
+      }
+
+      #socialmedia-widget-1752263698604 .social-media-button:hover i {
+        background: #666;
+      }
+    </style>
+    <div class="col20 f-left" style="text-align: left">
+</div>
+  </div>
+</div>
+            <div class="widget-row ">
+                <div class="widget
+        widgetResponsive textWidget col20" id="text-widget-1752263698592" data-type="TextWidget" data-delay="" data-animation-duration="" data-animation-delay="" data-animation="lazyAnimation-" style="margin-top: 2.36364%; margin-left: 0px;">
+    <div class="text-widget-content"><p style="text-align: left;"><span style="color: rgb(137, 137, 137); font-size: 15px; font-family: Helvetica;">COPYRIGHT © 2026. All Rights Reserved.</span></p></div>
+  </div>
+</div>
+            <div class="widget-row ">
+                <div class="widget
+
+       widgetResponsive spacer col20" id="spacer-widget-1752263698603" data-type="Spacer" style="margin-top: 0px; margin-left: 0px;">
+    <div class="widget-preserving-ratio-outer" style="padding-bottom: 14.010989010989011% ">
+      <div class="widget-preserving-ratio-inner"></div>
+    </div>
+  </div>
+</div>
+            </div><div class="grid-column    " style="width: 35%;
+               padding-left:4%;padding-right:0%;
+               background-image: none;
+
+                 background-size: cover;
+                 background-repeat: no-repeat;
+                 background-position: center center;
+
+               top: 0px;
+
+               ">
+
+            <div class="widget-row ">
+                <div class="widget
+        widgetResponsive textWidget col20" id="text-widget-1752263698602" data-type="TextWidget" data-delay="" data-animation-duration="" data-animation-delay="" data-animation="lazyAnimation-" style="margin-top: 0px; margin-left: 0px;">
+    <div class="text-widget-content"><h4><span style="caret-color: rgb(62, 62, 62); color: rgb(62, 62, 62); font-size: 20px;">Erio</span></h4></div>
+  </div>
+</div>
+            <div class="widget-row ">
+                <div class="widget
+        widgetResponsive col13" id="separator-widget-1752263698601" data-type="Separator" data-delay="" data-animation-duration="" data-animation-delay="" data-animation="lazyAnimation-" style="margin-top: 0px; margin-left: 0px;">
+    <div>
+        <div class="hr-title fullwidth-separator" style="text-align: left;">
+        <span class="border-color-primary" <="" span="">
+      </span></div>
+    </div>
+  </div>
+</div>
+            <div class="widget-row ">
+                <div class="widget
+        widgetResponsive textWidget col20" id="text-widget-1752263698600" data-type="TextWidget" data-delay="" data-animation-duration="" data-animation-delay="" data-animation="lazyAnimation-" style="margin-top: 0px; margin-left: 0px;">
+    <div class="text-widget-content"><p style="line-height: 2;"><a href="https://coach.erio.ai/privacypolicy" target="_blank" rel="noopener noreferrer" style="color: rgb(106, 106, 106); text-decoration: none;"><span style="color: rgb(106, 106, 106); font-family: Basiersquare;"><span style="font-size: 16px; background-color: rgba(255, 255, 255, 0);">Privacy Policy</span></span></a></p><p style="line-height: 2;"><a href="https://coach.erio.ai/termsofservice" target="_blank" rel="noopener noreferrer" style="color: rgb(106, 106, 106); text-decoration: none;"><span style="color: rgb(106, 106, 106); font-size: 16px; font-family: Basiersquare;">Terms Of Service</span></a></p><p style="line-height: 2;"><a href="mailto:support@erio.ai" style="color: rgb(106, 106, 106); text-decoration: none;"><span style="color: rgb(106, 106, 106); font-size: 16px; font-family: Basiersquare;">Contact Us: support@erio.ai</span></a></p></div>
+  </div>
+</div>
+            </div><div class="grid-column    " style="width: 35%;
+               padding-left:4%;padding-right:2%;background-color: transparent;
+               background-image: none;
+
+                 background-size: cover;
+                 background-repeat: no-repeat;
+                 background-position: center center;
+
+               top: 0px;
+
+               ">
+
+            <div class="widget-row ">
+                <div class="widget
+        widgetResponsive textWidget col20" id="text-widget-1752263698599" data-type="TextWidget" data-delay="" data-animation-duration="" data-animation-delay="" data-animation="lazyAnimation-" style="margin-top: 0px; margin-left: 0px;">
+    <div class="text-widget-content"><h4><span style="color: rgb(62, 62, 62); font-size: 20px;">Disclaimer</span></h4></div>
+  </div>
+</div>
+            <div class="widget-row ">
+                <div class="widget
+        widgetResponsive col16" id="separator-widget-1752263698598" data-type="Separator" data-delay="" data-animation-duration="" data-animation-delay="" data-animation="lazyAnimation-" style="margin-top: 0px; margin-left: 0px;">
+    <div>
+        <div class="hr-title fullwidth-separator" style="text-align: left;">
+        <span class="border-color-primary" <="" span="">
+      </span></div>
+    </div>
+  </div>
+</div>
+            <div class="widget-row ">
+                <div class="widget
+        widgetResponsive textWidget col20" id="text-widget-1752249376154" data-type="TextWidget" data-delay="" data-animation-duration="" data-animation-delay="" data-animation="lazyAnimation-" style="margin-top: 0px; margin-left: 0px;">
+    <div class="text-widget-content"><p style="line-height: 1;"><span style="font-size: 11px; font-family: Basiersquare;">This site is not part of the Facebook Site or Facebook Inc. Additionally, this site is NOT endorsed by Facebook in any way. FACEBOOK is a trademark of FACEBOOK, Inc.</span></p></div>
+  </div>
+</div>
+            <div class="widget-row ">
+                <div class="widget
+        widgetResponsive textWidget col20" id="text-widget-1752249376155" data-type="TextWidget" data-delay="" data-animation-duration="" data-animation-delay="" data-animation="lazyAnimation-" style="margin-top: 0px; margin-left: 0px;">
+    <div class="text-widget-content"><p style="line-height: 1;"><span style="font-size: 11px;">We can not and do not make any guarantees about your ability to get results or earn any money with our ideas, information, tools, or strategies. What we can guarantee is your satisfaction with our training. We give you a 100% satisfaction guarantee on the products we sell, so if you are not happy for any reason with the quality of our designs or training, you can request a refund or additional support &amp; our team members will assist you. Additionally, we also happily welcome suggestions &amp; or requests via our support email here: support@erio.ai</span></p></div>
+  </div>
+</div>
+            </div></div>
+    </div>
 
 </body>
 </html>
