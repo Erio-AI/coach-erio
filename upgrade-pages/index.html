@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="shortcut icon" type="image/png" href="/favicon.png">
+<meta name="robots" content="noindex, nofollow">
+<title>Redirecting…</title>
+<style>
+  html, body { margin: 0; padding: 0; background: #ffffff; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; color: #17252a; }
+  .wrap { min-height: 100vh; display: flex; align-items: center; justify-content: center; font-size: 15px; color: #536770; }
+</style>
+</head>
+<body>
+<div class="wrap">Loading your upgrade options…</div>
+<script>
+  (function(){
+    var params = new URLSearchParams(window.location.search || '');
+    var pages = (params.get('pages') || '').trim().toLowerCase();
+
+    var qs = window.location.search || '';
+    var extra = qs ? qs.substring(1) : '';
+
+    function go(url){
+      if (extra) url += (url.indexOf('?') === -1 ? '?' : '&') + extra;
+      window.location.replace(url);
+    }
+
+    if (pages === '5 pages') {
+      go('/checkout-adding-pages-20pgs/');
+    } else if (pages === '20 pages') {
+      go('/adding-pages-already-owned/');
+    } else {
+      go('/checkout-adding-pages-05pgs-20pgs/');
+    }
+  })();
+</script>
+</body>
+</html>
