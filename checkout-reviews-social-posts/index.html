@@ -820,7 +820,7 @@
                 <div class="widget widgetResponsive col20" style="margin-top: 16px; margin-left: 0;">
                   <div class="col20 f-left" style="width: 100%;">
                     <iframe id="ghl-checkout-iframe"
-                      data-src="https://coachcheckout.erio.ai/hosting"
+                      data-src="https://coachcheckout.erio.ai/reviews-social-posts"
                       src="about:blank"
                       style="width: 100%; min-height: 0; height: 420px; border: none; background: #ffffff; display: block; transition: height 320ms cubic-bezier(0.4, 0, 0.2, 1); will-change: height;"
                       title="Coach Checkout Order Form"
@@ -836,7 +836,7 @@
                         /* Forward the parent URL's query string (e.g. ?full_name=…&email=…&phone=…)
                            into the GHL iframe URL so the GHL page can prefill its fields. */
                         var f = document.getElementById('ghl-checkout-iframe');
-                        var base = (f && f.getAttribute('data-src')) || 'https://coachcheckout.erio.ai/hosting';
+                        var base = (f && f.getAttribute('data-src')) || 'https://coachcheckout.erio.ai/reviews-social-posts';
                         var qs = window.location.search || '';
                         f.src = base + qs;
 
