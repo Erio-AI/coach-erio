@@ -737,11 +737,37 @@
   <div class="grid-content">
     <div class="grid-column" style="width: 100%; padding-left: 5%; padding-right: 5%;">
 
+      <style>
+        .ew-card { position: relative; width: 100%; height: clamp(200px, 32vw, 260px); border-radius: 18px; background: linear-gradient(160deg, #0b1e28 0%, #06303f 100%); overflow: hidden; box-shadow: 0 24px 60px rgba(0, 58, 82, 0.18); display: flex; align-items: center; justify-content: center; }
+        .ew-steps { display: flex; align-items: stretch; justify-content: center; gap: 0; max-width: 860px; margin: 0 auto; flex-wrap: wrap; }
+        .ew-step { flex: 1 1 200px; min-width: 200px; padding: 18px 14px 0; text-align: center; position: relative; }
+        .ew-step-icon { width: 52px; height: 52px; border-radius: 50%; margin: 0 auto 12px; display: flex; align-items: center; justify-content: center; position: relative; }
+        .ew-step-line { position: absolute; top: 44px; left: calc(50% + 34px); right: calc(-50% + 34px); height: 2px; background: #d8e2e8; }
+        .ew-step:last-child .ew-step-line { display: none; }
+        .ew-done { background: #0aa574; box-shadow: 0 8px 20px rgba(10,165,116,0.35); }
+        .ew-now { background: #005475; box-shadow: 0 8px 20px rgba(0,84,117,0.4); }
+        .ew-now::after { content: ""; position: absolute; inset: -6px; border-radius: 50%; border: 2px solid rgba(0,84,117,0.45); animation: ew-pulse 1.6s ease-out infinite; }
+        .ew-later { background: #ffffff; border: 2px solid #d8e2e8; }
+        @keyframes ew-pulse { 0% { transform: scale(0.85); opacity: 1; } 100% { transform: scale(1.35); opacity: 0; } }
+        .ew-step-title { font-family: 'Basiersquare Bold', -apple-system, sans-serif; font-size: 16px; color: #000; margin-bottom: 6px; line-height: 1.25; }
+        .ew-step-sub { font-family: Basiersquare, -apple-system, sans-serif; font-size: 14px; color: #5c6b73; line-height: 1.45; }
+        .ew-24 { display: inline-block; background: linear-gradient(90deg, #ffff00 0%, #ffd400 100%); color: #000; font-family: 'Basiersquare Bold', -apple-system, sans-serif; font-size: 15px; padding: 10px 22px; border-radius: 999px; box-shadow: 0 10px 26px rgba(255, 212, 0, 0.35); }
+        .ew-bars { display: flex; align-items: flex-end; gap: 14px; height: 110px; }
+        .ew-bar { width: 26px; border-radius: 7px 7px 3px 3px; background: linear-gradient(180deg, #33b7e0, #005475); transform-origin: bottom; animation: ew-grow 3s ease-in-out infinite; box-shadow: 0 8px 18px rgba(0,0,0,0.3); }
+        .ew-bar.b1 { height: 38%; animation-delay: 0s; } .ew-bar.b2 { height: 58%; animation-delay: .2s; } .ew-bar.b3 { height: 76%; animation-delay: .4s; } .ew-bar.b4 { height: 100%; animation-delay: .6s; background: linear-gradient(180deg, #ffd400, #f0a800); }
+        @keyframes ew-grow { 0% { transform: scaleY(0.25); opacity: .5; } 35%, 75% { transform: scaleY(1); opacity: 1; } 100% { transform: scaleY(0.25); opacity: .5; } }
+        .ew-mag { position: absolute; right: 22%; top: 22%; width: 44px; height: 44px; animation: ew-magmove 3s ease-in-out infinite; }
+        .ew-mag circle { fill: none; stroke: rgba(255,255,255,0.9); stroke-width: 3; }
+        .ew-mag line { stroke: rgba(255,255,255,0.9); stroke-width: 4; stroke-linecap: round; }
+        @keyframes ew-magmove { 0%, 100% { transform: translate(0, 0) rotate(0deg); } 50% { transform: translate(-16px, 10px) rotate(-8deg); } }
+        @media (prefers-reduced-motion: reduce) { .ew-card *, .ew-now::after { animation: none !important; } }
+      </style>
+
       <div class="widget-row with-centered-content">
         <div class="widget widgetResponsive textWidget col20" style="margin-top: 0; margin-left: 0;">
           <div class="text-widget-content">
             <h2 style="text-align: center;">
-              <span style="font-family: 'Basiersquare Bold'; color: rgb(0, 0, 0); font-size: clamp(28px, 4vw, 42px);">Your Order Has Been Confirmed! ✅</span>
+              <span style="font-family: 'Basiersquare Bold'; color: rgb(0, 0, 0); font-size: clamp(28px, 4vw, 42px);">Your Google Optimization Is Underway! ✅</span>
             </h2>
           </div>
         </div>
@@ -751,24 +777,59 @@
         <div class="widget widgetResponsive textWidget col20" style="margin-top: 1%; margin-left: 0;">
           <div class="text-widget-content">
             <p style="text-align: center;">
-              <span style="font-family: Basiersquare; color: rgb(62, 62, 62); font-size: 18px;">Just watch the short video below to see your next steps to getting everything you've ordered.</span>
+              <span style="font-family: Basiersquare; color: rgb(62, 62, 62); font-size: 18px;">We've received your order and everything you filled out in your form — our team is already working on optimizing your Google presence.</span>
             </p>
           </div>
         </div>
       </div>
 
       <div class="widget-row with-centered-content">
-        <div class="widget widgetResponsive textWidget col20" style="margin-top: 3%; margin-left: 0; max-width: 780px; margin-left: auto; margin-right: auto;">
+        <div class="widget widgetResponsive textWidget col20" style="margin-top: 3%; margin-left: auto; margin-right: auto; max-width: 780px;">
           <div class="text-widget-content">
-            <div style="position: relative; width: 100%; padding-top: 56.25%; border-radius: 18px; background: #0b1e28; overflow: hidden; box-shadow: 0 24px 60px rgba(0, 58, 82, 0.18);">
-              <div style="position: absolute; inset: 12px; border: 2px dashed rgba(255,255,255,0.14); border-radius: 12px; pointer-events: none;"></div>
-              <div style="position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; color: rgba(255,255,255,0.35); text-align: center; letter-spacing: 0.12em; font-size: 14px; font-weight: 700; text-transform: uppercase; font-family: 'Basiersquare Bold', -apple-system, sans-serif;">
-                <div style="width: 88px; height: 88px; border-radius: 50%; background: linear-gradient(135deg, #005475, #007299); display: flex; align-items: center; justify-content: center; margin-bottom: 18px; box-shadow: 0 12px 32px rgba(0, 82, 117, 0.55), 0 0 0 8px rgba(255,255,255,0.06);">
-                  <svg viewBox="0 0 24 24" fill="#ffffff" style="width: 34px; height: 34px; margin-left: 4px;"><path d="M8 5v14l11-7z"/></svg>
-                </div>
-                Video Placeholder
+            <div class="ew-card">
+              <div class="ew-bars">
+                <div class="ew-bar b1"></div>
+                <div class="ew-bar b2"></div>
+                <div class="ew-bar b3"></div>
+                <div class="ew-bar b4"></div>
+              </div>
+              <svg class="ew-mag" viewBox="0 0 44 44"><circle cx="18" cy="18" r="11"/><line x1="27" y1="27" x2="38" y2="38"/></svg>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="widget-row with-centered-content">
+        <div class="widget widgetResponsive textWidget col20" style="margin-top: 3%; margin-left: 0;">
+          <div class="text-widget-content">
+            <div class="ew-steps">
+              <div class="ew-step">
+                <div class="ew-step-icon ew-done"><svg viewBox="0 0 24 24" style="width:24px;height:24px;fill:none;stroke:#fff;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;"><path d="M20 6L9 17l-5-5"/></svg><div class="ew-step-line"></div></div>
+                <div class="ew-step-title">Order &amp; Info Received</div>
+                <div class="ew-step-sub">Your payment is confirmed and we have everything you submitted in your form.</div>
+              </div>
+              <div class="ew-step">
+                <div class="ew-step-icon ew-now"><svg viewBox="0 0 24 24" style="width:26px;height:26px;fill:#ffffff;"><path d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.7C.4 7.1.9 10.1 2.9 12.1c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.4z"/></svg><div class="ew-step-line"></div></div>
+                <div class="ew-step-title">We're Optimizing Now</div>
+                <div class="ew-step-sub">Your Google Business presence is being tuned so more local customers find you first.</div>
+              </div>
+              <div class="ew-step">
+                <div class="ew-step-icon ew-later"><svg viewBox="0 0 24 24" style="width:26px;height:26px;fill:none;stroke:#005475;stroke-width:2;stroke-linecap:round;"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div>
+                <div class="ew-step-title">Live Within 24 Hours</div>
+                <div class="ew-step-sub">Your Google optimization will be implemented within 24 hours.</div>
               </div>
             </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="widget-row with-centered-content">
+        <div class="widget widgetResponsive textWidget col20" style="margin-top: 3.5%; margin-left: 0;">
+          <div class="text-widget-content" style="text-align: center;">
+            <span class="ew-24">🔍 Implemented within 24 hours</span>
+            <p style="text-align: center; margin-top: 18px;">
+              <span style="font-family: Basiersquare; color: rgb(62, 62, 62); font-size: 15px;">No action needed on your end — we'll email you the moment your Google optimization is live for your business.</span>
+            </p>
           </div>
         </div>
       </div>
