@@ -1814,6 +1814,12 @@ src="https://www.facebook.com/tr?id=1514106503481354&ev=PageView&noscript=1"
             @media (min-width: 1200px) {
               .coach-carousel-slide { flex-basis: 475px; max-width: 475px; }
             }
+            /* Mobile: bigger slides (~1.6 visible) and a quicker loop */
+            @media (max-width: 768px) {
+              .coach-carousel-slide { flex: 0 0 60vw; max-width: 60vw; padding: 0 7px; }
+              .coach-carousel-track { animation-duration: 20s; }
+              .coach-carousel::before, .coach-carousel::after { width: 28px; }
+            }
             .coach-carousel-slide img {
               width: 100%;
               height: auto;
@@ -1833,19 +1839,19 @@ src="https://www.facebook.com/tr?id=1514106503481354&ev=PageView&noscript=1"
             }
           </style>
           <div class="coach-carousel-track">
-            <div class="coach-carousel-slide"><img loading="lazy" src="./coach-source_files/coach-mockup-1.webp" alt="Example of a done-for-you life coach website built by Erio with booking calendar"Example coaching website #1 built by Erio"></div>
-            <div class="coach-carousel-slide"><img loading="lazy" src="./coach-source_files/coach-mockup-2.webp" alt="Custom executive coaching website example designed by Erio in 24 hours"Example coaching website #2 built by Erio"></div>
-            <div class="coach-carousel-slide"><img loading="lazy" src="./coach-source_files/coach-mockup-3.webp" alt="Done-for-you online coaching website example with lead capture form"Example coaching website #3 built by Erio"></div>
-            <div class="coach-carousel-slide"><img loading="lazy" src="./coach-source_files/coach-mockup-4.webp" alt="Custom coaching website design example built for a business coach"Example coaching website #4 built by Erio"></div>
-            <div class="coach-carousel-slide"><img loading="lazy" src="./coach-source_files/coach-mockup-5.webp" alt="Coaching website example with built-in booking calendar and sales copy"Example coaching website #5 built by Erio"></div>
-            <div class="coach-carousel-slide"><img loading="lazy" src="./coach-source_files/coach-mockup-6.webp" alt="Affordable custom coaching website example delivered by Erio"Example coaching website #6 built by Erio"></div>
+            <div class="coach-carousel-slide"><img loading="eager" decoding="async" src="./coach-source_files/coach-mockup-1.webp" alt="Example of a done-for-you life coach website built by Erio with booking calendar"></div>
+            <div class="coach-carousel-slide"><img loading="eager" decoding="async" src="./coach-source_files/coach-mockup-2.webp" alt="Custom executive coaching website example designed by Erio in 24 hours"></div>
+            <div class="coach-carousel-slide"><img loading="eager" decoding="async" src="./coach-source_files/coach-mockup-3.webp" alt="Done-for-you online coaching website example with lead capture form"></div>
+            <div class="coach-carousel-slide"><img loading="eager" decoding="async" src="./coach-source_files/coach-mockup-4.webp" alt="Custom coaching website design example built for a business coach"></div>
+            <div class="coach-carousel-slide"><img loading="eager" decoding="async" src="./coach-source_files/coach-mockup-5.webp" alt="Coaching website example with built-in booking calendar and sales copy"></div>
+            <div class="coach-carousel-slide"><img loading="eager" decoding="async" src="./coach-source_files/coach-mockup-6.webp" alt="Affordable custom coaching website example delivered by Erio"></div>
             <!-- Duplicate set (aria-hidden) — enables the seamless -50% loop -->
-            <div class="coach-carousel-slide" aria-hidden="true"><img loading="lazy" src="./coach-source_files/coach-mockup-1.webp" alt=""></div>
-            <div class="coach-carousel-slide" aria-hidden="true"><img loading="lazy" src="./coach-source_files/coach-mockup-2.webp" alt=""></div>
-            <div class="coach-carousel-slide" aria-hidden="true"><img loading="lazy" src="./coach-source_files/coach-mockup-3.webp" alt=""></div>
-            <div class="coach-carousel-slide" aria-hidden="true"><img loading="lazy" src="./coach-source_files/coach-mockup-4.webp" alt=""></div>
-            <div class="coach-carousel-slide" aria-hidden="true"><img loading="lazy" src="./coach-source_files/coach-mockup-5.webp" alt=""></div>
-            <div class="coach-carousel-slide" aria-hidden="true"><img loading="lazy" src="./coach-source_files/coach-mockup-6.webp" alt=""></div>
+            <div class="coach-carousel-slide" aria-hidden="true"><img loading="eager" decoding="async" src="./coach-source_files/coach-mockup-1.webp" alt=""></div>
+            <div class="coach-carousel-slide" aria-hidden="true"><img loading="eager" decoding="async" src="./coach-source_files/coach-mockup-2.webp" alt=""></div>
+            <div class="coach-carousel-slide" aria-hidden="true"><img loading="eager" decoding="async" src="./coach-source_files/coach-mockup-3.webp" alt=""></div>
+            <div class="coach-carousel-slide" aria-hidden="true"><img loading="eager" decoding="async" src="./coach-source_files/coach-mockup-4.webp" alt=""></div>
+            <div class="coach-carousel-slide" aria-hidden="true"><img loading="eager" decoding="async" src="./coach-source_files/coach-mockup-5.webp" alt=""></div>
+            <div class="coach-carousel-slide" aria-hidden="true"><img loading="eager" decoding="async" src="./coach-source_files/coach-mockup-6.webp" alt=""></div>
           </div>
         </div></div>
           </div>
