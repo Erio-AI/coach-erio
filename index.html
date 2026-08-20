@@ -3125,7 +3125,7 @@ src="https://www.facebook.com/tr?id=1514106503481354&ev=PageView&noscript=1"
   }
 </style>
 <div id="erio-sticky-cta" role="region" aria-label="Order shortcut">
-  <a href="#order-book" id="erio-sticky-cta-link">Get My Website &mdash; <span class="erio-cta-badge">Just $27!</span></a>
+  <a href="#hero-form" id="erio-sticky-cta-link">Get My Website &mdash; <span class="erio-cta-badge">Just $27!</span></a>
 </div>
 <script>
   (function(){
@@ -3143,8 +3143,14 @@ src="https://www.facebook.com/tr?id=1514106503481354&ev=PageView&noscript=1"
       window.addEventListener('scroll', onScroll, { passive: true });
       onScroll();
       link.addEventListener('click', function(e){
+        /* jump instantly — the page's global scroll-behavior:smooth would
+           otherwise animate across thousands of pixels and stutter */
         e.preventDefault();
-        hero.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        var html = document.documentElement;
+        var prev = html.style.scrollBehavior;
+        html.style.scrollBehavior = 'auto';
+        window.scrollTo(0, hero.getBoundingClientRect().top + window.scrollY - 20);
+        html.style.scrollBehavior = prev;
       });
     }
     if (document.readyState === 'loading') {
