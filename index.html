@@ -472,8 +472,15 @@
     }
   
     body {}
+    /* Mobile only: show the order form column above the "Order Now & You'll Receive" column */
     @media screen and (max-width: 768px) {
-     .note-editable.panel-body h1, 
+      #container-widget-1752257678109 .grid-content {
+        display: flex !important;
+        flex-direction: column-reverse !important;
+      }
+    }
+    @media screen and (max-width: 768px) {
+     .note-editable.panel-body h1,
        .text-widget-content h1 {
         font-family: Open Sans;
         line-height: 1em;
