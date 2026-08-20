@@ -385,7 +385,14 @@
     
       body {}
     }
-  
+
+  /* Mobile only: remove the gray side gutters — let the checkout section's
+     content span the full screen width. Desktop is untouched. */
+  @media screen and (max-width: 768px) {
+    #container-widget-1639058112415 > .grid-content {
+      width: 100% !important;
+    }
+  }
 
   .page-layout:not(.style-boxed-layout) .grid-content,
   .theme .page-layout:not(.style-boxed-layout) .container,
