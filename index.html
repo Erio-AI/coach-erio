@@ -1075,22 +1075,22 @@ src="https://www.facebook.com/tr?id=1514106503481354&ev=PageView&noscript=1"
       <script>
         (function(){
           function boot(){
-            var root = document.querySelector('.erio-hero-carousel');
-            if (!root) return;
-            var imgs = root.querySelectorAll('.erio-hc-track img');
-            var dots = root.querySelectorAll('.erio-hc-dots button');
-            var i = 0, n = imgs.length;
-            function go(k){
-              i = k % n;
-              imgs.forEach(function(im){ im.style.transform = 'translateX(' + (-100 * i) + '%)'; });
-              dots.forEach(function(d, j){ d.classList.toggle('on', j === i); });
-            }
-            var timer = setInterval(function(){ go(i + 1); }, 3500);
-            dots.forEach(function(d, j){
-              d.addEventListener('click', function(){
-                clearInterval(timer);
-                timer = null;
-                go(j);
+            document.querySelectorAll('.erio-hero-carousel').forEach(function(root){
+              var imgs = root.querySelectorAll('.erio-hc-track img');
+              var dots = root.querySelectorAll('.erio-hc-dots button');
+              var i = 0, n = imgs.length;
+              function go(k){
+                i = k % n;
+                imgs.forEach(function(im){ im.style.transform = 'translateX(' + (-100 * i) + '%)'; });
+                dots.forEach(function(d, j){ d.classList.toggle('on', j === i); });
+              }
+              var timer = setInterval(function(){ go(i + 1); }, 3500);
+              dots.forEach(function(d, j){
+                d.addEventListener('click', function(){
+                  clearInterval(timer);
+                  timer = null;
+                  go(j);
+                });
               });
             });
           }
@@ -1135,15 +1135,20 @@ src="https://www.facebook.com/tr?id=1514106503481354&ev=PageView&noscript=1"
                   <div class="widget 
           widgetResponsive imageWidget col20" id="image-widget-1752249376276" data-type="ImageWidget" data-delay="" data-animation-duration="" data-animation-delay="" data-animation="lazyAnimation-" style="margin-top: 0px; margin-left: 0px;">
 
-      <div class="image-box  image-position-default" style="max-width: 714px;">
-        <div class="widget-preserving-ratio-outer " style="padding-bottom: 95.23809523809523%">
-
-          <div class="widget-preserving-ratio-inner" data-slide="https://content.app-sources.com/s/749138317120496041/uploads/Images/WF_Core_Site_Images-4-2258456.svg?format=webp">
-            <a class="lazyImage flex flex-col
-                image-fit">
-              <img src="./coach-source_files/hero-showcase.webp" class="flex-none" alt="Custom coaching website mockup" style="" loading="lazy">
-            </a>
-            </div>
+      <div class="erio-hero-carousel" aria-roledescription="carousel" aria-label="What you get" style="max-width: 714px; margin: 0 auto;">
+        <div class="erio-hc-track">
+          <img src="./coach-source_files/hero-slide-1.jpg" alt="Examples of custom coaching websites" loading="eager" decoding="async">
+          <img src="./coach-source_files/hero-slide-2.jpg" alt="Coach hosting a live session full of students" loading="lazy" decoding="async">
+          <img src="./coach-source_files/hero-slide-3.jpg" alt="Coaching calendar booked solid with client calls" loading="lazy" decoding="async">
+          <img src="./coach-source_files/hero-slide-4.jpg" alt="Coach being found on Google and ChatGPT" loading="lazy" decoding="async">
+          <img src="./coach-source_files/hero-slide-5.jpg" alt="Customer reviews about their coaching websites" loading="lazy" decoding="async">
+        </div>
+        <div class="erio-hc-dots" role="tablist" aria-label="Choose slide">
+          <button type="button" class="on" aria-label="Slide 1"></button>
+          <button type="button" aria-label="Slide 2"></button>
+          <button type="button" aria-label="Slide 3"></button>
+          <button type="button" aria-label="Slide 4"></button>
+          <button type="button" aria-label="Slide 5"></button>
         </div>
       </div>
     </div>
