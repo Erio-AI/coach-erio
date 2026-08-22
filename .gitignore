@@ -1,0 +1,17 @@
+
+# --- added by the auto-backup: never upload secrets ---
+.env
+.env.*
+*.pem
+*.key
+id_rsa
+id_rsa.*
+keys/
+**/keys/
+*Key.txt
+*-key.txt
+*_key.txt
+service-account*.json
+*credentials*.json
+*serviceaccount*.json
+Sync/
