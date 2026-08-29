@@ -744,7 +744,18 @@ s.parentNode.insertBefore(t,s)}(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
 fbq('init', '1514106503481354');
 fbq('track', 'PageView');
-fbq('track', 'Purchase', {value: 47.00, currency: 'USD'});
+// Purchase fires once per buyer. This page is also the link in the welcome
+// email, so revisits and refreshes would otherwise each count as a new sale
+// (their browser still carries the original ad-click cookie for 90 days).
+(function(){
+  var key = 'erioPurchaseFired:hosting';
+  var already = false;
+  try { already = localStorage.getItem(key) === '1'; } catch (error) {}
+  if (!already) {
+    fbq('track', 'Purchase', {value: 47.00, currency: 'USD'});
+    try { localStorage.setItem(key, '1'); } catch (error) {}
+  }
+})();
 }
 </script>
 <noscript><img height="1" width="1" style="display:none"
