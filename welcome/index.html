@@ -726,6 +726,7 @@
     }
   </style><!-- Meta Pixel -->
 <script>
+if(/(^|\.)erio\.ai$/.test(location.hostname)){
 !function(f,b,e,v,n,t,s)
 {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
 n.callMethod.apply(n,arguments):n.queue.push(arguments)};
@@ -736,7 +737,27 @@ s.parentNode.insertBefore(t,s)}(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
 fbq('init', '1514106503481354');
 fbq('track', 'PageView');
-fbq('track', 'Purchase', {value: 27.00, currency: 'USD'});
+// Purchase must mean one real payment. The GHL order form is a cross-origin
+// iframe (coachcheckout.erio.ai). After payment GHL redirects THAT iframe to
+// this page, and the breakout script at the top of this file then reloads the
+// same URL in the top window - so the page loads twice per sale. This URL is
+// also the link in the welcome email, so revisits on another device would
+// count again. Fire only on a real checkout arrival, and only once per browser.
+(function(){
+  var key = 'erioPurchaseFired:coaching';
+  var fromCheckout = false;
+  try {
+    fromCheckout = Boolean(document.referrer) &&
+      new URL(document.referrer).hostname === 'coachcheckout.erio.ai';
+  } catch (error) {}
+  if (!fromCheckout) { return; }
+  var already = false;
+  try { already = localStorage.getItem(key) === '1'; } catch (error) {}
+  if (already) { return; }
+  fbq('track', 'Purchase', {value: 27.00, currency: 'USD'});
+  try { localStorage.setItem(key, '1'); } catch (error) {}
+})();
+}
 </script>
 <noscript><img height="1" width="1" style="display:none"
 src="https://www.facebook.com/tr?id=1514106503481354&ev=PageView&noscript=1"
